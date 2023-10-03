@@ -2,7 +2,7 @@
 //  String.swift
 //  SureBet Profit Calculator
 //
-//  Created by BELDIN Yaroslav on 03.10.2023.
+//  Created by Iaroslav Beldin on 03.10.2023.
 //
 
 import Foundation

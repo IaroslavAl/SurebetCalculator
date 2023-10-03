@@ -21,7 +21,7 @@ struct SurebetCalculatorView: View {
         .background(
             Color(uiColor: .systemBackground)
                 .onTapGesture {
-                    isFocused = .none
+                    viewModel.isFocused = .none
                 }
         )
         .toolbar {
