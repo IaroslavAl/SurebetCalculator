@@ -26,8 +26,10 @@ struct SurebetGeneralOutcome: View {
             profitPercentage
         }
         .padding(.trailing)
-        .onChange(of: isFocused) {
-            viewModel.isFocused = $0
+        .onChange(of: isFocused) { newValue in
+            if newValue != .none {
+                viewModel.isFocused = newValue
+            }
         }
         .onChange(of: viewModel.isFocused) {
             isFocused = $0
