@@ -23,8 +23,10 @@ struct SurebetOutcomes: View {
             .transition(.move(edge: .leading))
             .animation(.default, value: viewModel.selected.rawValue)
         }
-        .onChange(of: isFocused) {
-            viewModel.isFocused = $0
+        .onChange(of: isFocused) { newValue in
+            if newValue != .none {
+                viewModel.isFocused = newValue
+            }
         }
         .onChange(of: viewModel.isFocused) {
             isFocused = $0
