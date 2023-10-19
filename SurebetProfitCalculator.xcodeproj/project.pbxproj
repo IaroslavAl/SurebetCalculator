@@ -17,7 +17,7 @@
 /* Begin PBXFileReference section */
 		A31AFDD02AE19B2B008FC262 /* SurebetCalculatorPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SurebetCalculatorPackage; sourceTree = "<group>"; };
 		A3245A992ACC6FA70062A171 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		A3D682EA2AE1A5E100B00DAC /* Surebet Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "Surebet Calculator.app"; path = "/Users/ruabiy/MyProjects/iOS/SurebetCalculator/build/Debug-iphoneos/Surebet Calculator.app"; sourceTree = "<absolute>"; };
+		A3CC35B82AE1C057002451F6 /* SurebetProfitCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SurebetProfitCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C462066F297BFAC900E70051 /* SurebetCalculatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurebetCalculatorApp.swift; sourceTree = "<group>"; };
 		C4620673297BFACC00E70051 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C4620676297BFACC00E70051 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -35,21 +35,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C4620663297BFAC900E70051 = {
-			isa = PBXGroup;
-			children = (
-				C462066E297BFAC900E70051 /* Project */,
-				A31AFDD02AE19B2B008FC262 /* SurebetCalculatorPackage */,
-			);
-			sourceTree = "<group>";
-		};
-		C462066E297BFAC900E70051 /* Project */ = {
+		A3CC35B92AE1C05E002451F6 /* SurebetProfitCalculator */ = {
 			isa = PBXGroup;
 			children = (
 				C462066F297BFAC900E70051 /* SurebetCalculatorApp.swift */,
 				A3245A992ACC6FA70062A171 /* ContentView.swift */,
 				C4620673297BFACC00E70051 /* Assets.xcassets */,
 				C4620675297BFACC00E70051 /* Preview Content */,
+			);
+			path = SurebetProfitCalculator;
+			sourceTree = "<group>";
+		};
+		C4620663297BFAC900E70051 = {
+			isa = PBXGroup;
+			children = (
+				C462066E297BFAC900E70051 /* Project */,
+				A31AFDD02AE19B2B008FC262 /* SurebetCalculatorPackage */,
+				A3CC35B82AE1C057002451F6 /* SurebetProfitCalculator.app */,
+			);
+			sourceTree = "<group>";
+		};
+		C462066E297BFAC900E70051 /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				A3CC35B92AE1C05E002451F6 /* SurebetProfitCalculator */,
 			);
 			path = Project;
 			sourceTree = "<group>";
@@ -65,9 +74,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C462066B297BFAC900E70051 /* Surebet Calculator */ = {
+		C462066B297BFAC900E70051 /* SurebetProfitCalculator */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C462067A297BFACC00E70051 /* Build configuration list for PBXNativeTarget "Surebet Calculator" */;
+			buildConfigurationList = C462067A297BFACC00E70051 /* Build configuration list for PBXNativeTarget "SurebetProfitCalculator" */;
 			buildPhases = (
 				C4620668297BFAC900E70051 /* Sources */,
 				C4620669297BFAC900E70051 /* Frameworks */,
@@ -77,12 +86,12 @@
 			);
 			dependencies = (
 			);
-			name = "Surebet Calculator";
+			name = SurebetProfitCalculator;
 			packageProductDependencies = (
 				A3F3BBD72AE19FDE00C05BCD /* Root */,
 			);
 			productName = "SureBet Calculator";
-			productReference = A3D682EA2AE1A5E100B00DAC /* Surebet Calculator.app */;
+			productReference = A3CC35B82AE1C057002451F6 /* SurebetProfitCalculator.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -100,7 +109,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C4620667297BFAC900E70051 /* Build configuration list for PBXProject "Surebet Calculator" */;
+			buildConfigurationList = C4620667297BFAC900E70051 /* Build configuration list for PBXProject "SurebetProfitCalculator" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -115,7 +124,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C462066B297BFAC900E70051 /* Surebet Calculator */,
+				C462066B297BFAC900E70051 /* SurebetProfitCalculator */,
 			);
 		};
 /* End PBXProject section */
@@ -268,11 +277,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Project/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Project/SurebetProfitCalculator/Preview Content\"";
 				DEVELOPMENT_TEAM = 848LVZR9JB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Surebet Calculator";
+				INFOPLIST_KEY_CFBundleDisplayName = Calculator;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -304,11 +313,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Project/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Project/SurebetProfitCalculator/Preview Content\"";
 				DEVELOPMENT_TEAM = 848LVZR9JB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Surebet Calculator";
+				INFOPLIST_KEY_CFBundleDisplayName = Calculator;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -336,7 +345,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C4620667297BFAC900E70051 /* Build configuration list for PBXProject "Surebet Calculator" */ = {
+		C4620667297BFAC900E70051 /* Build configuration list for PBXProject "SurebetProfitCalculator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C4620678297BFACC00E70051 /* Debug */,
@@ -345,7 +354,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C462067A297BFACC00E70051 /* Build configuration list for PBXNativeTarget "Surebet Calculator" */ = {
+		C462067A297BFACC00E70051 /* Build configuration list for PBXNativeTarget "SurebetProfitCalculator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C462067B297BFACC00E70051 /* Debug */,
