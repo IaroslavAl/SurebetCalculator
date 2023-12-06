@@ -1,0 +1,31 @@
+{
+  "configurations" : [
+    {
+      "id" : "E30434FC-D9D2-417A-8570-7D7D40E15F04",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:SurebetCalculatorPackage",
+        "identifier" : "OnboardingTests",
+        "name" : "OnboardingTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:SurebetCalculatorPackage",
+        "identifier" : "SurebetCalculatorTests",
+        "name" : "SurebetCalculatorTests"
+      }
+    }
+  ],
+  "version" : 1
+}

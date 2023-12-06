@@ -17,7 +17,7 @@ public struct OnboardingView: View {
     
     public var body: some View {
         VStack {
-            OnboardingCloseButton($onboardingIsDone)
+            OnboardingXmarkButton($onboardingIsDone)
             OnboardingTabView(viewModel)
             OnboardingIndex(viewModel)
             OnboardingButton(viewModel, onboardingIsDone: $onboardingIsDone)

@@ -17,15 +17,11 @@ struct OnboardingIndex: View {
     var body: some View {
         HStack {
             ForEach(viewModel.pages.indices, id: \.self) { index in
-                let size: CGFloat = index == viewModel.currentPage
-                ? 12
-                : 8
+                let size: CGFloat = index == viewModel.currentPage ? 12 : 8
                 Circle()
                     .frame(width: size, height: size)
                     .foregroundColor(
-                        index == viewModel.currentPage
-                        ? Color(uiColor: .darkGray)
-                        : Color(uiColor: .lightGray)
+                        Color(uiColor: index == viewModel.currentPage ? .darkGray : .lightGray)
                     )
             }
         }

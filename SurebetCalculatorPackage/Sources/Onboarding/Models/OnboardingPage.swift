@@ -13,9 +13,9 @@ struct OnboardingPage {
     
     static func createPages() -> [OnboardingPage] {
         [
-            .init(image: "onboarding1", description: "Calculate two outcomes"),
-            .init(image: "onboarding2", description: "Calculate three outcomes"),
-            .init(image: "onboarding3", description: "Calculate four outcomes")
+            OnboardingPage(image: "onboarding1", description: "Calculate two outcomes"),
+            OnboardingPage(image: "onboarding2", description: "Calculate three outcomes"),
+            OnboardingPage(image: "onboarding3", description: "Calculate four outcomes")
         ]
     }
 }

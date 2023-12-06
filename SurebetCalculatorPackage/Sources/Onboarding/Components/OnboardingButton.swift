@@ -20,28 +20,36 @@ struct OnboardingButton: View {
     }
     
     var body: some View {
-        Button {
-            if viewModel.currentPage < viewModel.pages.count - 1 {
-                viewModel.currentPage += 1
-            } else {
-                onboardingIsDone = true
-            }
-        } label: {
-            Text(
-                viewModel.currentPage == 0
+        Button(action: action) {
+            label
+        }
+    }
+    
+    func action() -> Void {
+        if viewModel.currentPage < viewModel.pages.index(before: viewModel.pages.endIndex) {
+            viewModel.currentPage += 1
+        } else {
+            onboardingIsDone = true
+        }
+    }
+}
+
+private extension OnboardingButton {
+    var label: some View {
+        Text(
+            viewModel.currentPage == 0
                 ? "More details"
                 : viewModel.currentPage < viewModel.pages.count - 1
-                ? "Next"
-                : "Close"
-            )
-            .foregroundColor(.white)
-            .bold()
-            .frame(maxWidth: .infinity)
-            .padding()
-            .background(.green)
-            .cornerRadius(12)
-            .transaction { $0.animation = .none }
-        }
+                    ? "Next"
+                    : "Close"
+        )
+        .foregroundColor(.white)
+        .bold()
+        .frame(maxWidth: .infinity)
+        .padding()
+        .background(.green)
+        .cornerRadius(12)
+        .transaction { $0.animation = .none }
     }
 }
 
