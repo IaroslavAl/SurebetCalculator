@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct OnboardingCloseButton: View {
+struct OnboardingXmarkButton: View {
     @Binding private var onboardingIsDone: Bool
     
     init(_ onboardingIsDone: Binding<Bool>) {
@@ -15,19 +15,21 @@ struct OnboardingCloseButton: View {
     }
     
     var body: some View {
-        Button {
-            onboardingIsDone = true
-        } label: {
+        Button(action: action) {
             Image(systemName: "xmark")
                 .font(.title)
                 .foregroundColor(Color(uiColor: .darkGray))
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
+    
+    func action() -> Void {
+        onboardingIsDone = true
+    }
 }
 
 struct OnboardingCloseButton_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingCloseButton(.constant(false))
+        OnboardingXmarkButton(.constant(false))
     }
 }
