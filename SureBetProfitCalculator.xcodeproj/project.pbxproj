@@ -14,6 +14,20 @@
 		A37997652B6E132000921D81 /* SureBetProfitCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37997642B6E132000921D81 /* SureBetProfitCalculatorTests.swift */; };
 		A379976F2B6E132000921D81 /* SureBetProfitCalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A379976E2B6E132000921D81 /* SureBetProfitCalculatorUITests.swift */; };
 		A37997712B6E132000921D81 /* SureBetProfitCalculatorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37997702B6E132000921D81 /* SureBetProfitCalculatorUITestsLaunchTests.swift */; };
+		A37997852B6E176400921D81 /* SurebetCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37997842B6E176400921D81 /* SurebetCalculatorView.swift */; };
+		A37997872B6E181F00921D81 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37997862B6E181F00921D81 /* PickerView.swift */; };
+		A37997892B6E189700921D81 /* SurebetCalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37997882B6E189700921D81 /* SurebetCalculatorViewModel.swift */; };
+		A379978B2B6E1CE500921D81 /* TotalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A379978A2B6E1CE500921D81 /* TotalView.swift */; };
+		A379978D2B6E1D9900921D81 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A379978C2B6E1D9900921D81 /* TextView.swift */; };
+		A37997942B6E1E0F00921D81 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37997932B6E1E0F00921D81 /* String.swift */; };
+		A37997962B6E1E3300921D81 /* ToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37997952B6E1E3300921D81 /* ToggleView.swift */; };
+		A37997982B6E205E00921D81 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37997972B6E205E00921D81 /* Double.swift */; };
+		A379979A2B6E300200921D81 /* CalculatorTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37997992B6E300200921D81 /* CalculatorTextFieldStyle.swift */; };
+		A379979F2B6F87EC00921D81 /* OutcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A379979E2B6F87EC00921D81 /* OutcomeView.swift */; };
+		A37997A12B6F889C00921D81 /* TotalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37997A02B6F889C00921D81 /* TotalModel.swift */; };
+		A37997A32B6F890600921D81 /* RowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37997A22B6F890600921D81 /* RowModel.swift */; };
+		A37997A82B6FB3CE00921D81 /* KeyboardDoneButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37997A72B6FB3CE00921D81 /* KeyboardDoneButton.swift */; };
+		A37997AA2B6FB45B00921D81 /* NavigationClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37997A92B6FB45B00921D81 /* NavigationClearButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +58,20 @@
 		A379976A2B6E132000921D81 /* SureBetProfitCalculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SureBetProfitCalculatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A379976E2B6E132000921D81 /* SureBetProfitCalculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SureBetProfitCalculatorUITests.swift; sourceTree = "<group>"; };
 		A37997702B6E132000921D81 /* SureBetProfitCalculatorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SureBetProfitCalculatorUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A37997842B6E176400921D81 /* SurebetCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurebetCalculatorView.swift; sourceTree = "<group>"; };
+		A37997862B6E181F00921D81 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
+		A37997882B6E189700921D81 /* SurebetCalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurebetCalculatorViewModel.swift; sourceTree = "<group>"; };
+		A379978A2B6E1CE500921D81 /* TotalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalView.swift; sourceTree = "<group>"; };
+		A379978C2B6E1D9900921D81 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		A37997932B6E1E0F00921D81 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		A37997952B6E1E3300921D81 /* ToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleView.swift; sourceTree = "<group>"; };
+		A37997972B6E205E00921D81 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		A37997992B6E300200921D81 /* CalculatorTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTextFieldStyle.swift; sourceTree = "<group>"; };
+		A379979E2B6F87EC00921D81 /* OutcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutcomeView.swift; sourceTree = "<group>"; };
+		A37997A02B6F889C00921D81 /* TotalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalModel.swift; sourceTree = "<group>"; };
+		A37997A22B6F890600921D81 /* RowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowModel.swift; sourceTree = "<group>"; };
+		A37997A72B6FB3CE00921D81 /* KeyboardDoneButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDoneButton.swift; sourceTree = "<group>"; };
+		A37997A92B6FB45B00921D81 /* NavigationClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationClearButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +124,8 @@
 			children = (
 				A37997532B6E131E00921D81 /* SureBetProfitCalculatorApp.swift */,
 				A37997552B6E131E00921D81 /* ContentView.swift */,
+				A379977F2B6E16BA00921D81 /* SurebetCalculator */,
+				A37997902B6E1DCD00921D81 /* Extensions */,
 				A37997572B6E132000921D81 /* Assets.xcassets */,
 				A37997592B6E132000921D81 /* Preview Content */,
 			);
@@ -125,6 +155,66 @@
 				A37997702B6E132000921D81 /* SureBetProfitCalculatorUITestsLaunchTests.swift */,
 			);
 			path = SureBetProfitCalculatorUITests;
+			sourceTree = "<group>";
+		};
+		A379977F2B6E16BA00921D81 /* SurebetCalculator */ = {
+			isa = PBXGroup;
+			children = (
+				A37997802B6E16DE00921D81 /* Models */,
+				A37997812B6E16E700921D81 /* Views */,
+				A37997822B6E16EF00921D81 /* ViewModels */,
+			);
+			path = SurebetCalculator;
+			sourceTree = "<group>";
+		};
+		A37997802B6E16DE00921D81 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A37997A02B6F889C00921D81 /* TotalModel.swift */,
+				A37997A22B6F890600921D81 /* RowModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A37997812B6E16E700921D81 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A37997842B6E176400921D81 /* SurebetCalculatorView.swift */,
+				A37997862B6E181F00921D81 /* PickerView.swift */,
+				A379978A2B6E1CE500921D81 /* TotalView.swift */,
+				A379979E2B6F87EC00921D81 /* OutcomeView.swift */,
+				A379978C2B6E1D9900921D81 /* TextView.swift */,
+				A37997952B6E1E3300921D81 /* ToggleView.swift */,
+				A37997992B6E300200921D81 /* CalculatorTextFieldStyle.swift */,
+				A37997A42B6FB25A00921D81 /* Buttons */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A37997822B6E16EF00921D81 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				A37997882B6E189700921D81 /* SurebetCalculatorViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A37997902B6E1DCD00921D81 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A37997932B6E1E0F00921D81 /* String.swift */,
+				A37997972B6E205E00921D81 /* Double.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A37997A42B6FB25A00921D81 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				A37997A72B6FB3CE00921D81 /* KeyboardDoneButton.swift */,
+				A37997A92B6FB45B00921D81 /* NavigationClearButton.swift */,
+			);
+			path = Buttons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +348,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				A37997562B6E131E00921D81 /* ContentView.swift in Sources */,
+				A37997962B6E1E3300921D81 /* ToggleView.swift in Sources */,
+				A37997852B6E176400921D81 /* SurebetCalculatorView.swift in Sources */,
+				A37997942B6E1E0F00921D81 /* String.swift in Sources */,
+				A37997A12B6F889C00921D81 /* TotalModel.swift in Sources */,
+				A379978B2B6E1CE500921D81 /* TotalView.swift in Sources */,
+				A37997A82B6FB3CE00921D81 /* KeyboardDoneButton.swift in Sources */,
+				A37997872B6E181F00921D81 /* PickerView.swift in Sources */,
+				A379978D2B6E1D9900921D81 /* TextView.swift in Sources */,
+				A37997892B6E189700921D81 /* SurebetCalculatorViewModel.swift in Sources */,
+				A379979F2B6F87EC00921D81 /* OutcomeView.swift in Sources */,
+				A37997982B6E205E00921D81 /* Double.swift in Sources */,
+				A37997AA2B6FB45B00921D81 /* NavigationClearButton.swift in Sources */,
+				A379979A2B6E300200921D81 /* CalculatorTextFieldStyle.swift in Sources */,
+				A37997A32B6F890600921D81 /* RowModel.swift in Sources */,
 				A37997542B6E131E00921D81 /* SureBetProfitCalculatorApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,7 +451,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -404,7 +508,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -422,18 +526,21 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SureBetProfitCalculator/Preview Content\"";
+				DEVELOPMENT_TEAM = 8P5A3CMFCU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Calculator;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Iaroslav-Beldin.SureBetProfitCalculator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -450,18 +557,21 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SureBetProfitCalculator/Preview Content\"";
+				DEVELOPMENT_TEAM = 8P5A3CMFCU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Calculator;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Iaroslav-Beldin.SureBetProfitCalculator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

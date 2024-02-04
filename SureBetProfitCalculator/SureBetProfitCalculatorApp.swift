@@ -11,7 +11,9 @@ import SwiftUI
 struct SureBetProfitCalculatorApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack {
+                ContentView()
+            }
         }
     }
 }
