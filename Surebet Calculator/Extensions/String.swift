@@ -2,7 +2,7 @@
 //  String.swift
 //  SureBet Profit Calculator
 //
-//  Created by Iaroslav Beldin on 03.10.2023.
+//  Created by Iaroslav Beldin on 02.04.2024.
 //
 
 import Foundation
@@ -16,5 +16,11 @@ extension String {
             return formattedValue.doubleValue
         }
         return nil
+    }
+    
+    func isValidDouble() -> Bool {
+        self.formatToDouble() != nil
+        || self.isEmpty
+        || self.formatToDouble() ?? 0 > 0
     }
 }

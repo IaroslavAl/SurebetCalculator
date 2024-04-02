@@ -9,11 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     @AppStorage("onboardingIsDone") private var onboardingIsDone: Bool = false
+    @StateObject private var surebetCalculatorViewModel = SurebetCalculatorViewModel()
     
     var body: some View {
         if onboardingIsDone {
             NavigationView {
                 SurebetCalculatorView()
+                    .environmentObject(surebetCalculatorViewModel)
             }
             .navigationViewStyle(.stack)
             .preferredColorScheme(.dark)

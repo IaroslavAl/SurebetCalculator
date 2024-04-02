@@ -48,5 +48,6 @@ struct OnboardingButton: View {
 struct OnboardingButton_Previews: PreviewProvider {
     static var previews: some View {
         OnboardingButton(OnboardingViewModel(), onboardingIsDone: .constant(false))
+            .padding()
     }
 }
