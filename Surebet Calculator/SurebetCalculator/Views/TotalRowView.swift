@@ -42,7 +42,7 @@ private extension TotalRowView {
         VStack(spacing: spacing) {
             Text(profitPercentageLabel)
             TextView(
-                number: viewModel.total.profitPercentage,
+                text: viewModel.total.profitPercentage,
                 isPercent: true
             )
         }

@@ -10,6 +10,6 @@ import Foundation
 struct TotalRow: Equatable {
     var isON: Bool = true
     var betSize: String = ""
-    var profitPercentage: Double = 0
+    var profitPercentage: String = "0%"
 }
 

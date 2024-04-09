@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct TextView: View {
-    let number: Double
+    let text: String
     let isPercent: Bool
     
     var body: some View {
-        Text(number.formatToString(isPercent: isPercent))
+        Text(text)
             .padding(textPadding)
             .frame(height: frameHeight)
             .frame(maxWidth: .infinity)
@@ -26,14 +26,18 @@ private extension TextView {
     var textPadding: CGFloat { 8 }
     var frameHeight: CGFloat { UIDevice.current.userInterfaceIdiom == .pad ? 80 : 40 }
     var cornerRadius: CGFloat { 10 }
-    var color: Color { isNumberNotNegative(number) ? .green : .red }
+    var color: Color { isNumberNotNegative(text) ? .green : .red }
     
-    func isNumberNotNegative(_ number: Double) -> Bool {
-        number >= 0
+    func isNumberNotNegative(_ text: String) -> Bool {
+        if let text = text.formatToDouble() {
+            return text >= 0
+        } else {
+            return true
+        }
     }
 }
 
 #Preview {
-    TextView(number: 1, isPercent: true)
+    TextView(text: 1.formatToString(isPercent: true), isPercent: true)
         .padding()
 }

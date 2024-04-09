@@ -12,7 +12,7 @@ struct Row: Equatable {
     var isON: Bool = false
     var betSize: String = ""
     var coefficient: String = ""
-    var income: Double = 0
+    var income: String = "0"
     
     static func createRows(_ number: Int = 4) -> [Row] {
         (0..<number).map { Row(id: $0) }

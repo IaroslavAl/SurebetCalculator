@@ -61,7 +61,7 @@ private extension RowView {
                 Text(incomeText)
             }
             TextView(
-                number: viewModel.rows[id].income,
+                text: viewModel.rows[id].income,
                 isPercent: false
             )
         }

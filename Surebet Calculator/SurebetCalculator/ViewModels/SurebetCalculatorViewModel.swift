@@ -8,11 +8,25 @@
 import Foundation
 
 final class SurebetCalculatorViewModel: ObservableObject {
-    @Published private(set) var total: TotalRow = TotalRow()
-    @Published private(set) var rows: [Row] = Row.createRows()
-    @Published private(set) var selectedNumberOfRows: NumberOfRows = .two
-    @Published private(set) var selectedRow: RowType? = .total
-    @Published private(set) var focus: FocusableField? = nil
+    @Published private(set) var total: TotalRow
+    @Published private(set) var rows: [Row]
+    @Published private(set) var selectedNumberOfRows: NumberOfRows
+    @Published private(set) var selectedRow: RowType?
+    @Published private(set) var focus: FocusableField?
+    
+    init(
+        total: TotalRow = TotalRow(),
+        rows: [Row] = Row.createRows(),
+        selectedNumberOfRows: NumberOfRows = .two,
+        selectedRow: RowType? = .total,
+        focus: FocusableField? = nil
+    ) {
+        self.total = total
+        self.rows = rows
+        self.selectedNumberOfRows = selectedNumberOfRows
+        self.selectedRow = selectedRow
+        self.focus = focus
+    }
     
     enum ViewAction {
         case selectRow(RowType)
@@ -60,8 +74,8 @@ private extension SurebetCalculatorViewModel {
             switch row {
             case .total:
                 total.isON = true
-            case let .row(number):
-                rows[number].isON = true
+            case let .row(id):
+                rows[id].isON = true
             }
             selectedRow = row
         }
@@ -138,11 +152,7 @@ private extension SurebetCalculatorViewModel {
     var isAllCoefficient: Bool {
         rows[indexesOfDisplayedRows]
             .map(\.coefficient)
-            .allSatisfy {
-                $0.isValidDouble()
-                && !$0.isEmpty
-                && $0.formatToDouble() ?? 0 > 0
-            }
+            .allSatisfy { $0.formatToDouble() ?? 0 > 0 }
     }
     
     func setTotalBetSize(text: String) {
@@ -161,9 +171,7 @@ private extension SurebetCalculatorViewModel {
         rows[id].betSize = text
         if text.isEmpty, selectedRow != .none {
             rows.map(\.id).forEach {
-                if $0 != id {
-                    rows[$0].betSize.removeAll()
-                }
+                rows[$0].betSize.removeAll()
             }
             total.betSize.removeAll()
         } else if selectedRow == .none {
@@ -175,7 +183,7 @@ private extension SurebetCalculatorViewModel {
         let sumOfBetSizes = rows[indexesOfDisplayedRows]
             .compactMap { $0.betSize.formatToDouble() }
             .reduce(0) { $0 + $1 }
-        total.betSize = sumOfBetSizes.formatToString()
+        total.betSize = sumOfBetSizes == 0 ? "" : sumOfBetSizes.formatToString()
     }
     
     func setRowCoefficient(id: Int, text: String) {
@@ -195,14 +203,14 @@ private extension SurebetCalculatorViewModel {
     
     func clearTotal() {
         total.betSize.removeAll()
-        total.profitPercentage = 0
+        total.profitPercentage = "0%"
     }
     
     func clear(_ rowsRange: Range<Int>) {
         rowsRange.forEach {
             rows[$0].betSize.removeAll()
             rows[$0].coefficient.removeAll()
-            rows[$0].income = 0
+            rows[$0].income = "0"
         }
     }
 }
@@ -216,7 +224,7 @@ private extension SurebetCalculatorViewModel {
         }
         switch selectedRow {
         case .total:
-            if total.betSize.isValidDouble() {
+            if total.betSize.isValidDouble(), total.betSize != "" {
                 return .total
             }
         case let .row(id):
@@ -246,7 +254,8 @@ private extension SurebetCalculatorViewModel {
     
     func calculateTotal() {
         calculateRowsBetSizesAndIncomes()
-        total.profitPercentage = (100 / surebet) - 100
+        let profitPercentage = (100 / surebet) - 100
+        total.profitPercentage = profitPercentage.formatToString(isPercent: true)
     }
     
     func calculateRows() {
@@ -257,13 +266,14 @@ private extension SurebetCalculatorViewModel {
             let coefficient = rows[$0].coefficient.formatToDouble()
             let betSize = rows[$0].betSize.formatToDouble()
             if let coefficient, let betSize {
-                let winning = coefficient * betSize
-                let income = winning - totalBetSize
-                rows[$0].income = income
+                rows[$0].income = calculateIncome(
+                    coefficient: coefficient,
+                    betSize: betSize,
+                    totalBetSize: totalBetSize
+                )
             }
         }
-        total.betSize = totalBetSize.formatToString()
-        total.profitPercentage = (100 / surebet) - 100
+        calculateProfitPercentage(totalBetSize: totalBetSize)
     }
     
     func calculateRow(_ id: Int) {
@@ -271,8 +281,7 @@ private extension SurebetCalculatorViewModel {
         let betSize = rows[id].betSize.formatToDouble()
         if let coefficient, let betSize {
             let totalBetSize = (betSize / (1 / coefficient / surebet))
-            total.betSize = totalBetSize.formatToString()
-            total.profitPercentage = (100 / surebet) - 100
+            calculateProfitPercentage(totalBetSize: totalBetSize)
         }
         calculateRowsBetSizesAndIncomes()
     }
@@ -284,10 +293,28 @@ private extension SurebetCalculatorViewModel {
             if let coefficient, let totalBetSize {
                 let betSize = 1 / coefficient / surebet * totalBetSize
                 rows[$0].betSize = betSize.formatToString()
-                let winning = coefficient * betSize
-                let income = winning - totalBetSize
-                rows[$0].income = income
+                rows[$0].income = calculateIncome(
+                    coefficient: coefficient,
+                    betSize: betSize,
+                    totalBetSize: totalBetSize
+                )
             }
         }
+    }
+    
+    func calculateProfitPercentage(totalBetSize: Double) {
+        let profitPercentage = (100 / surebet) - 100
+        total.betSize = totalBetSize.formatToString()
+        total.profitPercentage = profitPercentage.formatToString(isPercent: true)
+    }
+    
+    func calculateIncome(
+        coefficient: Double,
+        betSize: Double,
+        totalBetSize: Double
+    ) -> String {
+        let winning = coefficient * betSize
+        let income = winning - totalBetSize
+        return income.formatToString()
     }
 }
