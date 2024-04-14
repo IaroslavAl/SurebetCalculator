@@ -35,6 +35,9 @@
 		A3245AA12ACC936B0062A171 /* OnboardingTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3245AA02ACC936B0062A171 /* OnboardingTabView.swift */; };
 		A3245AA32ACC93D70062A171 /* OnboardingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3245AA22ACC93D70062A171 /* OnboardingButton.swift */; };
 		A346DD812BC5E41000763539 /* SurebetCalculatorViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A346DD802BC5E41000763539 /* SurebetCalculatorViewModelTests.swift */; };
+		A391C9232BCC334900D50977 /* AppMetricaAdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = A391C9222BCC334900D50977 /* AppMetricaAdSupport */; };
+		A391C9252BCC334900D50977 /* AppMetricaCore in Frameworks */ = {isa = PBXBuildFile; productRef = A391C9242BCC334900D50977 /* AppMetricaCore */; };
+		A391C9272BCC334900D50977 /* AppMetricaCrashes in Frameworks */ = {isa = PBXBuildFile; productRef = A391C9262BCC334900D50977 /* AppMetricaCrashes */; };
 		A3D472212BBDC05D00B8E0EA /* KeyboardClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D472202BBDC05D00B8E0EA /* KeyboardClearButton.swift */; };
 		A3F54AEF2BBDE56600F12D95 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F54AEE2BBDE56600F12D95 /* TextFieldView.swift */; };
 		C4620670297BFAC900E70051 /* SurebetCalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C462066F297BFAC900E70051 /* SurebetCalculatorApp.swift */; };
@@ -102,6 +105,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A391C9272BCC334900D50977 /* AppMetricaCrashes in Frameworks */,
+				A391C9232BCC334900D50977 /* AppMetricaAdSupport in Frameworks */,
+				A391C9252BCC334900D50977 /* AppMetricaCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +318,9 @@
 			);
 			name = "SureBet Profit Calculator";
 			packageProductDependencies = (
+				A391C9222BCC334900D50977 /* AppMetricaAdSupport */,
+				A391C9242BCC334900D50977 /* AppMetricaCore */,
+				A391C9262BCC334900D50977 /* AppMetricaCrashes */,
 			);
 			productName = "SureBet Calculator";
 			productReference = C462066C297BFAC900E70051 /* SureBet Profit Calculator.app */;
@@ -346,6 +355,7 @@
 			);
 			mainGroup = C4620663297BFAC900E70051;
 			packageReferences = (
+				A391C9212BCC334900D50977 /* XCRemoteSwiftPackageReference "appmetrica-sdk-ios" */,
 			);
 			productRefGroup = C462066D297BFAC900E70051 /* Products */;
 			projectDirPath = "";
@@ -697,6 +707,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A391C9212BCC334900D50977 /* XCRemoteSwiftPackageReference "appmetrica-sdk-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/appmetrica/appmetrica-sdk-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A391C9222BCC334900D50977 /* AppMetricaAdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A391C9212BCC334900D50977 /* XCRemoteSwiftPackageReference "appmetrica-sdk-ios" */;
+			productName = AppMetricaAdSupport;
+		};
+		A391C9242BCC334900D50977 /* AppMetricaCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A391C9212BCC334900D50977 /* XCRemoteSwiftPackageReference "appmetrica-sdk-ios" */;
+			productName = AppMetricaCore;
+		};
+		A391C9262BCC334900D50977 /* AppMetricaCrashes */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A391C9212BCC334900D50977 /* XCRemoteSwiftPackageReference "appmetrica-sdk-ios" */;
+			productName = AppMetricaCrashes;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C4620664297BFAC900E70051 /* Project object */;
 }
