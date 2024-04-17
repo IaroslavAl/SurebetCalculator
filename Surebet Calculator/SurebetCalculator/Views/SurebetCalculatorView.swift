@@ -13,16 +13,24 @@ struct SurebetCalculatorView: View {
     var body: some View {
         VStack(spacing: spacing) {
             PickerView()
-            TotalRowView()
-                .padding(.trailing, horizontalPadding)
-            rowsView
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: spacing) {
+                    TotalRowView()
+                        .padding(.trailing, horizontalPadding)
+                    rowsView
+                }
+            }
+            .simultaneousGesture(
+                TapGesture().onEnded {
+                    viewModel.send(.hideKeyboard)
+                }
+            )
         }
         .environmentObject(viewModel)
         .navigationTitle(navigationTitle)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar(content: toolbar)
         .frame(maxHeight: .infinity, alignment: .top)
-        .background(background)
         .font(font)
     }
 }
@@ -50,23 +58,13 @@ private extension SurebetCalculatorView {
             KeyboardDoneButton()
         }
     }
-    
-    var background: some View {
-        Color.clear
-            .contentShape(.rect)
-            .simultaneousGesture(
-                TapGesture().onEnded {
-                    viewModel.send(.hideKeyboard)
-                }
-            )
-    }
 }
 
 private extension SurebetCalculatorView {
     var navigationTitle: String { "Surebet calculator" }
-    var spacing: CGFloat { UIDevice.current.userInterfaceIdiom == .pad ? 32 : 16 }
-    var rowsSpacing: CGFloat { UIDevice.current.userInterfaceIdiom == .pad ? 16 : 8 }
-    var horizontalPadding: CGFloat { UIDevice.current.userInterfaceIdiom == .pad ? 16 : 8 }
+    var spacing: CGFloat { UIDevice.current.userInterfaceIdiom == .pad ? 24 : 16 }
+    var rowsSpacing: CGFloat { UIDevice.current.userInterfaceIdiom == .pad ? 12 : 8 }
+    var horizontalPadding: CGFloat { UIDevice.current.userInterfaceIdiom == .pad ? 12 : 8 }
     var font: Font { UIDevice.current.userInterfaceIdiom == .pad ? .title : .body }
 }
 

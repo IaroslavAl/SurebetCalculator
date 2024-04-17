@@ -24,8 +24,8 @@ struct TextView: View {
 
 private extension TextView {
     var textPadding: CGFloat { 8 }
-    var frameHeight: CGFloat { UIDevice.current.userInterfaceIdiom == .pad ? 80 : 40 }
-    var cornerRadius: CGFloat { 10 }
+    var frameHeight: CGFloat { UIDevice.current.userInterfaceIdiom == .pad ? 60 : 40 }
+    var cornerRadius: CGFloat { UIDevice.current.userInterfaceIdiom == .pad ? 15 : 10 }
     var color: Color { isNumberNotNegative(text) ? .green : .red }
     
     func isNumberNotNegative(_ text: String) -> Bool {

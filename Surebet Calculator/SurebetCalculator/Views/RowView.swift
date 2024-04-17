@@ -29,7 +29,7 @@ private extension RowView {
     var coefficientText: String { "Coefficient" }
     var betSizeText: String { "Bet size" }
     var incomeText: String { "Income" }
-    var spacing: CGFloat { UIDevice.current.userInterfaceIdiom == .pad ? 16 : 8 }
+    var spacing: CGFloat { UIDevice.current.userInterfaceIdiom == .pad ? 12 : 8 }
     
     var betSize: some View {
         VStack(spacing: spacing) {

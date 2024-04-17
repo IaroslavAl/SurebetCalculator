@@ -21,7 +21,7 @@ struct CalculatorTextFieldStyle: TextFieldStyle {
             .keyboardType(.decimalPad)
             .overlay {
                 RoundedRectangle(cornerRadius: cornerRadius)
-                    .stroke(strokeColor)
+                    .stroke(strokeColor, lineWidth: strokeLineWidth)
             }
             .animation(.default, value: isValid)
             .animation(.default, value: isEnabled)
@@ -30,8 +30,9 @@ struct CalculatorTextFieldStyle: TextFieldStyle {
 
 private extension CalculatorTextFieldStyle {
     var padding: CGFloat { 8 }
-    var frameHeight: CGFloat { UIDevice.current.userInterfaceIdiom == .pad ? 80 : 40 }
-    var cornerRadius: CGFloat { 10 }
+    var frameHeight: CGFloat { UIDevice.current.userInterfaceIdiom == .pad ? 60 : 40 }
+    var cornerRadius: CGFloat { UIDevice.current.userInterfaceIdiom == .pad ? 15 : 10 }
+    var strokeLineWidth: CGFloat { UIDevice.current.userInterfaceIdiom == .pad ? 1.5 : 1 }
     var strokeColor: Color { isEnabled ? .green : .clear }
     var backgroundColor: Color {
         isValid ? Color(uiColor: .secondarySystemFill) : .red.opacity(0.3)
