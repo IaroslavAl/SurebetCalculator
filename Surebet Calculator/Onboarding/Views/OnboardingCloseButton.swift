@@ -8,26 +8,33 @@
 import SwiftUI
 
 struct OnboardingCloseButton: View {
-    @Binding private var onboardingIsDone: Bool
-    
-    init(_ onboardingIsDone: Binding<Bool>) {
-        self._onboardingIsDone = onboardingIsDone
-    }
+    @EnvironmentObject private var vm: OnboardingViewModel
     
     var body: some View {
-        Button {
-            onboardingIsDone = true
-        } label: {
-            Image(systemName: "xmark")
-                .font(.title)
-                .foregroundColor(Color(uiColor: .darkGray))
+        Button(action: action) {
+            label
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
 
-struct OnboardingCloseButton_Previews: PreviewProvider {
-    static var previews: some View {
-        OnboardingCloseButton(.constant(false))
+private extension OnboardingCloseButton {
+    var imageName: String { "xmark" }
+    
+    func action() {
+        vm.send(.dismiss)
     }
+    
+    var label: some View {
+        Image(systemName: imageName)
+            .font(.title)
+            .foregroundColor(
+                Color(uiColor: .darkGray)
+            )
+    }
+}
+
+#Preview {
+    OnboardingCloseButton()
+        .environmentObject(OnboardingViewModel())
 }

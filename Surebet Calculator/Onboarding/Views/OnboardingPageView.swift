@@ -8,26 +8,30 @@
 import SwiftUI
 
 struct OnboardingPageView: View {
-    private let page: OnboardingPage
-    
-    init(page: OnboardingPage) {
-        self.page = page
-    }
+    let page: OnboardingPage
     
     var body: some View {
-        VStack {
+        VStack(spacing: .zero) {
             Image(page.image)
                 .resizable()
                 .scaledToFit()
                 .padding(.vertical)
+            Spacer()
             Text(page.description)
                 .font(.title)
+                .multilineTextAlignment(.center)
+                .lineLimit(3)
+                .minimumScaleFactor(0.5)
+            Spacer()
         }
     }
 }
 
-struct OnboardingPageView_Previews: PreviewProvider {
-    static var previews: some View {
-        OnboardingPageView(page: .init(image: "onboarding", description: "Page 1"))
-    }
+#Preview {
+    OnboardingPageView(
+        page: .init(
+            image: "onboarding1",
+            description: "description"
+        )
+    )
 }

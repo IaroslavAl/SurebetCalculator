@@ -30,8 +30,9 @@ private extension ToggleButton {
             return false
         }
     }
-    var height: CGFloat { UIDevice.current.userInterfaceIdiom == .pad ? 60 : 40 }
-    var horizontalPadding: CGFloat { UIDevice.current.userInterfaceIdiom == .pad ? 12 : 8 }
+    var iPad: Bool { UIDevice.current.userInterfaceIdiom == .pad }
+    var height: CGFloat { iPad ? 60 : 40 }
+    var horizontalPadding: CGFloat { iPad ? 12 : 8 }
     var transition: AnyTransition { .opacity.combined(with: .scale) }
     var animationDuration: Double { 0.25 }
     

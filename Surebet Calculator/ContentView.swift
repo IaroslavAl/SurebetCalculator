@@ -8,26 +8,37 @@
 import SwiftUI
 
 struct ContentView: View {
-    @AppStorage("onboardingIsDone") private var onboardingIsDone: Bool = false
     @StateObject private var surebetCalculatorViewModel = SurebetCalculatorViewModel()
+    @StateObject private var onboardingViewModel = OnboardingViewModel()
+    @AppStorage("onboardingIsShown") private var onboardingIsShown: Bool = false
+    @State private var isAnimation: Bool = false
     
     var body: some View {
-        if onboardingIsDone {
-            NavigationView {
-                SurebetCalculatorView()
-                    .environmentObject(surebetCalculatorViewModel)
+        Group {
+            if onboardingIsShown {
+                NavigationView {
+                    SurebetCalculatorView()
+                        .environmentObject(surebetCalculatorViewModel)
+                }
+                .navigationViewStyle(.stack)
+            } else {
+                if isAnimation {
+                    OnboardingView(onboardingIsShown: $onboardingIsShown)
+                        .environmentObject(onboardingViewModel)
+                        .transition(.move(edge: .bottom))
+                }
             }
-            .navigationViewStyle(.stack)
-            .preferredColorScheme(.dark)
-        } else {
-            OnboardingView($onboardingIsDone)
-                .preferredColorScheme(.dark)
+        }
+        .preferredColorScheme(.dark)
+        .animation(.default, value: onboardingIsShown)
+        .onAppear {
+            withAnimation {
+                isAnimation = true
+            }
         }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+#Preview {
+    ContentView()
 }

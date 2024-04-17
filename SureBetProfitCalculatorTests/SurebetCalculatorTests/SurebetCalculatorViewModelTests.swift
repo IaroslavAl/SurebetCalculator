@@ -2,7 +2,7 @@
 //  SurebetCalculatorViewModelTests.swift
 //  SureBetProfitCalculatorTests
 //
-//  Created by BELDIN Yaroslav on 10.04.2024.
+//  Created by Iaroslav Beldin on 10.04.2024.
 //
 
 import XCTest

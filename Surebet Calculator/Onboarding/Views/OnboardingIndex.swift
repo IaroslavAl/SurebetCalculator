@@ -8,34 +8,41 @@
 import SwiftUI
 
 struct OnboardingIndex: View {
-    @ObservedObject private var viewModel: OnboardingViewModel
-    
-    init(_ viewModel: OnboardingViewModel) {
-        self.viewModel = viewModel
-    }
+    @EnvironmentObject private var vm: OnboardingViewModel
     
     var body: some View {
-        HStack {
-            ForEach(viewModel.pages.indices, id: \.self) { index in
-                let size: CGFloat = index == viewModel.currentPage
-                ? 12
-                : 8
+        HStack(spacing: spacing) {
+            ForEach(vm.pages.indices, id: \.self) { index in
                 Circle()
-                    .frame(width: size, height: size)
-                    .foregroundColor(
-                        index == viewModel.currentPage
-                        ? Color(uiColor: .darkGray)
-                        : Color(uiColor: .lightGray)
-                    )
+                    .frame(width: size(index))
+                    .foregroundColor(color(index))
             }
         }
-        .animation(.default, value: viewModel.currentPage)
-        .padding(24)
+        .animation(.default, value: vm.currentPage)
+        .padding(padding)
+        .fixedSize()
     }
 }
 
-struct OnboardingIndex_Previews: PreviewProvider {
-    static var previews: some View {
-        OnboardingIndex(OnboardingViewModel())
+private extension OnboardingIndex {
+    var iPad: Bool { UIDevice.current.userInterfaceIdiom == .pad }
+    var spacing: CGFloat { iPad ? 12 : 8 }
+    var padding: CGFloat { iPad ? 36 : 24 }
+    
+    func size(_ index: Int) -> CGFloat {
+        if index == vm.currentPage {
+            iPad ? 18 : 12
+        } else {
+            iPad ? 12 : 8
+        }
     }
+    
+    func color(_ index: Int) -> Color {
+        Color(uiColor: index == vm.currentPage ? .darkGray : .lightGray)
+    }
+}
+
+#Preview {
+    OnboardingIndex()
+        .environmentObject(OnboardingViewModel())
 }

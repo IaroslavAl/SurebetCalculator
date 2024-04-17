@@ -26,7 +26,8 @@ private extension TotalRowView {
     var betSizeLabel: String { "Total bet size" }
     var profitPercentageLabel: String { "Profit percentage" }
     var placeholder: String { "Total bet size" }
-    var spacing: CGFloat { UIDevice.current.userInterfaceIdiom == .pad ? 12 : 8 }
+    var iPad: Bool { UIDevice.current.userInterfaceIdiom == .pad }
+    var spacing: CGFloat { iPad ? 12 : 8 }
     
     var totalBetSizeColumn: some View {
         VStack(spacing: spacing) {

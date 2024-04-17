@@ -34,6 +34,7 @@
 		A3245A9F2ACC92BA0062A171 /* OnboardingCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3245A9E2ACC92BA0062A171 /* OnboardingCloseButton.swift */; };
 		A3245AA12ACC936B0062A171 /* OnboardingTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3245AA02ACC936B0062A171 /* OnboardingTabView.swift */; };
 		A3245AA32ACC93D70062A171 /* OnboardingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3245AA22ACC93D70062A171 /* OnboardingButton.swift */; };
+		A32D5BD42BD17CF100200A2B /* OnboardingViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32D5BD32BD17CF100200A2B /* OnboardingViewModelTests.swift */; };
 		A346DD812BC5E41000763539 /* SurebetCalculatorViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A346DD802BC5E41000763539 /* SurebetCalculatorViewModelTests.swift */; };
 		A391C9232BCC334900D50977 /* AppMetricaAdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = A391C9222BCC334900D50977 /* AppMetricaAdSupport */; };
 		A391C9252BCC334900D50977 /* AppMetricaCore in Frameworks */ = {isa = PBXBuildFile; productRef = A391C9242BCC334900D50977 /* AppMetricaCore */; };
@@ -83,6 +84,7 @@
 		A3245A9E2ACC92BA0062A171 /* OnboardingCloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCloseButton.swift; sourceTree = "<group>"; };
 		A3245AA02ACC936B0062A171 /* OnboardingTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTabView.swift; sourceTree = "<group>"; };
 		A3245AA22ACC93D70062A171 /* OnboardingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingButton.swift; sourceTree = "<group>"; };
+		A32D5BD32BD17CF100200A2B /* OnboardingViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModelTests.swift; sourceTree = "<group>"; };
 		A346DD752BC5E38100763539 /* SureBetProfitCalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SureBetProfitCalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A346DD802BC5E41000763539 /* SurebetCalculatorViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurebetCalculatorViewModelTests.swift; sourceTree = "<group>"; };
 		A3D472202BBDC05D00B8E0EA /* KeyboardClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardClearButton.swift; sourceTree = "<group>"; };
@@ -164,9 +166,9 @@
 			isa = PBXGroup;
 			children = (
 				A3245A912ACC6D700062A171 /* OnboardingView.swift */,
-				A3245A972ACC6F480062A171 /* OnboardingPageView.swift */,
 				A3245A9E2ACC92BA0062A171 /* OnboardingCloseButton.swift */,
 				A3245AA02ACC936B0062A171 /* OnboardingTabView.swift */,
+				A3245A972ACC6F480062A171 /* OnboardingPageView.swift */,
 				A3245A9C2ACC91F50062A171 /* OnboardingIndex.swift */,
 				A3245AA22ACC93D70062A171 /* OnboardingButton.swift */,
 			);
@@ -191,9 +193,18 @@
 			path = SurebetCalculator;
 			sourceTree = "<group>";
 		};
+		A32D5BD22BD17CD300200A2B /* OnboardingTests */ = {
+			isa = PBXGroup;
+			children = (
+				A32D5BD32BD17CF100200A2B /* OnboardingViewModelTests.swift */,
+			);
+			path = OnboardingTests;
+			sourceTree = "<group>";
+		};
 		A346DD762BC5E38100763539 /* SureBetProfitCalculatorTests */ = {
 			isa = PBXGroup;
 			children = (
+				A32D5BD22BD17CD300200A2B /* OnboardingTests */,
 				A346DD7E2BC5E3C100763539 /* SurebetCalculatorTests */,
 			);
 			path = SureBetProfitCalculatorTests;
@@ -392,6 +403,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A346DD812BC5E41000763539 /* SurebetCalculatorViewModelTests.swift in Sources */,
+				A32D5BD42BD17CF100200A2B /* OnboardingViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

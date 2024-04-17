@@ -8,26 +8,25 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    @Binding private var onboardingIsDone: Bool
-    @StateObject private var viewModel = OnboardingViewModel()
-    
-    init(_ onboardingIsDone: Binding<Bool>) {
-        self._onboardingIsDone = onboardingIsDone
-    }
+    @EnvironmentObject private var vm: OnboardingViewModel
+    @Binding var onboardingIsShown: Bool
     
     var body: some View {
-        VStack {
-            OnboardingCloseButton($onboardingIsDone)
-            OnboardingTabView(viewModel)
-            OnboardingIndex(viewModel)
-            OnboardingButton(viewModel, onboardingIsDone: $onboardingIsDone)
+        VStack(spacing: .zero) {
+            OnboardingCloseButton()
+            OnboardingTabView()
+            OnboardingIndex()
+            OnboardingButton()
         }
+        .environmentObject(vm)
         .padding()
+        .onChange(of: vm.onboardingIsShown) {
+            onboardingIsShown = $0
+        }
     }
 }
 
-struct OnboardingView_Previews: PreviewProvider {
-    static var previews: some View {
-        OnboardingView(.constant(false))
-    }
+#Preview {
+    OnboardingView(onboardingIsShown: .constant(false))
+        .environmentObject(OnboardingViewModel())
 }

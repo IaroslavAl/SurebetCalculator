@@ -8,46 +8,48 @@
 import SwiftUI
 
 struct OnboardingButton: View {
-    @ObservedObject private var viewModel: OnboardingViewModel
-    @Binding private var onboardingIsDone: Bool
-    
-    init(
-        _ viewModel: OnboardingViewModel,
-        onboardingIsDone: Binding<Bool>
-    ) {
-        self.viewModel = viewModel
-        self._onboardingIsDone = onboardingIsDone
-    }
+    @EnvironmentObject private var vm: OnboardingViewModel
     
     var body: some View {
-        Button {
-            if viewModel.currentPage < viewModel.pages.count - 1 {
-                viewModel.currentPage += 1
-            } else {
-                onboardingIsDone = true
-            }
-        } label: {
-            Text(
-                viewModel.currentPage == 0
-                ? "More details"
-                : viewModel.currentPage < viewModel.pages.count - 1
-                ? "Next"
-                : "Close"
-            )
+        Button(action: action) {
+            label
+        }
+    }
+}
+
+private extension OnboardingButton {
+    var text: String {
+        let firstPage = 0
+        let lastPage = vm.pages.index(before: vm.pages.endIndex)
+        if vm.currentPage == firstPage {
+            return "More details"
+        } else if vm.currentPage == lastPage {
+            return "Close"
+        } else {
+            return "Next"
+        }
+    }
+    var iPad: Bool { UIDevice.current.userInterfaceIdiom == .pad }
+    var cornerRadius: CGFloat { iPad ? 18 : 12 }
+    
+    func action() {
+        vm.send(.setCurrentPage(vm.currentPage + 1))
+    }
+    
+    var label: some View {
+        Text(text)
             .foregroundColor(.white)
             .bold()
             .frame(maxWidth: .infinity)
             .padding()
             .background(.green)
-            .cornerRadius(12)
-            .transaction { $0.animation = .none }
-        }
+            .cornerRadius(cornerRadius)
+            .animation(.none, value: vm.currentPage)
     }
 }
 
-struct OnboardingButton_Previews: PreviewProvider {
-    static var previews: some View {
-        OnboardingButton(OnboardingViewModel(), onboardingIsDone: .constant(false))
-            .padding()
-    }
+#Preview {
+    OnboardingButton()
+        .environmentObject(OnboardingViewModel())
 }
+

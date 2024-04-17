@@ -8,11 +8,41 @@
 import Foundation
 
 final class OnboardingViewModel: ObservableObject {
-    @Published var pages: [OnboardingPage]
-    @Published var currentPage: Int
+    @Published private(set) var currentPage: Int
+    @Published private(set) var onboardingIsShown: Bool
+    let pages: [OnboardingPage]
     
     init() {
-        self.pages = OnboardingPage.createPages()
         self.currentPage = 0
+        self.onboardingIsShown = false
+        self.pages = OnboardingPage.createPages()
+    }
+    
+    enum ViewAction {
+        case setCurrentPage(Int)
+        case dismiss
+    }
+    
+    func send(_ action: ViewAction) {
+        switch action {
+        case let .setCurrentPage(index):
+            setCurrentPage(index)
+        case .dismiss:
+            dismiss()
+        }
+    }
+}
+
+private extension OnboardingViewModel {
+    func setCurrentPage(_ index: Int) {
+        if pages.indices.contains(index) {
+            currentPage = index
+        } else {
+            dismiss()
+        }
+    }
+    
+    func dismiss() {
+        onboardingIsShown = true
     }
 }
