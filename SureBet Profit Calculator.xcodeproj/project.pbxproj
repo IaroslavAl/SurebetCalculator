@@ -40,6 +40,7 @@
 		A391C9252BCC334900D50977 /* AppMetricaCore in Frameworks */ = {isa = PBXBuildFile; productRef = A391C9242BCC334900D50977 /* AppMetricaCore */; };
 		A391C9272BCC334900D50977 /* AppMetricaCrashes in Frameworks */ = {isa = PBXBuildFile; productRef = A391C9262BCC334900D50977 /* AppMetricaCrashes */; };
 		A3D472212BBDC05D00B8E0EA /* KeyboardClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D472202BBDC05D00B8E0EA /* KeyboardClearButton.swift */; };
+		A3E5F6302BD1A01100C96546 /* ReviewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E5F62F2BD1A01100C96546 /* ReviewHandler.swift */; };
 		A3F54AEF2BBDE56600F12D95 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F54AEE2BBDE56600F12D95 /* TextFieldView.swift */; };
 		C4620670297BFAC900E70051 /* SurebetCalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C462066F297BFAC900E70051 /* SurebetCalculatorApp.swift */; };
 		C4620674297BFACC00E70051 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4620673297BFACC00E70051 /* Assets.xcassets */; };
@@ -88,6 +89,7 @@
 		A346DD752BC5E38100763539 /* SureBetProfitCalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SureBetProfitCalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A346DD802BC5E41000763539 /* SurebetCalculatorViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurebetCalculatorViewModelTests.swift; sourceTree = "<group>"; };
 		A3D472202BBDC05D00B8E0EA /* KeyboardClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardClearButton.swift; sourceTree = "<group>"; };
+		A3E5F62F2BD1A01100C96546 /* ReviewHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewHandler.swift; sourceTree = "<group>"; };
 		A3F54AEE2BBDE56600F12D95 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		C462066C297BFAC900E70051 /* SureBet Profit Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SureBet Profit Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C462066F297BFAC900E70051 /* SurebetCalculatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurebetCalculatorApp.swift; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 			children = (
 				C462066F297BFAC900E70051 /* SurebetCalculatorApp.swift */,
 				A3245A992ACC6FA70062A171 /* ContentView.swift */,
+				A3E5F62F2BD1A01100C96546 /* ReviewHandler.swift */,
 				A327F8012ACC12C600E59355 /* SurebetCalculator */,
 				A3245A8D2ACC6D0A0062A171 /* Onboarding */,
 				A31C82402BBCA0C300556855 /* Styles */,
@@ -419,6 +422,7 @@
 				A31C82372BBCA02900556855 /* TextView.swift in Sources */,
 				A31C82472BBCA13D00556855 /* Double.swift in Sources */,
 				A3245A962ACC6DDE0062A171 /* OnboardingPage.swift in Sources */,
+				A3E5F6302BD1A01100C96546 /* ReviewHandler.swift in Sources */,
 				A31C822B2BBC9F7600556855 /* FocusableField.swift in Sources */,
 				A3245AA12ACC936B0062A171 /* OnboardingTabView.swift in Sources */,
 				A31C823B2BBCA08600556855 /* ToggleButton.swift in Sources */,
