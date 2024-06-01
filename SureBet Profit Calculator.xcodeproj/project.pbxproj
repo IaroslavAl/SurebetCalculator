@@ -41,6 +41,8 @@
 		A391C9272BCC334900D50977 /* AppMetricaCrashes in Frameworks */ = {isa = PBXBuildFile; productRef = A391C9262BCC334900D50977 /* AppMetricaCrashes */; };
 		A3D472212BBDC05D00B8E0EA /* KeyboardClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D472202BBDC05D00B8E0EA /* KeyboardClearButton.swift */; };
 		A3E5F6302BD1A01100C96546 /* ReviewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E5F62F2BD1A01100C96546 /* ReviewHandler.swift */; };
+		A3F4186A2C0AC96C0097F28C /* BetCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F418692C0AC96C0097F28C /* BetCalculator.swift */; };
+		A3F4186E2C0AE6F10097F28C /* BetCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F4186D2C0AE6F10097F28C /* BetCalculatorTests.swift */; };
 		A3F54AEF2BBDE56600F12D95 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F54AEE2BBDE56600F12D95 /* TextFieldView.swift */; };
 		C4620670297BFAC900E70051 /* SurebetCalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C462066F297BFAC900E70051 /* SurebetCalculatorApp.swift */; };
 		C4620674297BFACC00E70051 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4620673297BFACC00E70051 /* Assets.xcassets */; };
@@ -91,6 +93,8 @@
 		A3D472202BBDC05D00B8E0EA /* KeyboardClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardClearButton.swift; sourceTree = "<group>"; };
 		A3D9A7442BD1C709006B2F1A /* SureBet-Profit-Calculator-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "SureBet-Profit-Calculator-Info.plist"; sourceTree = "<group>"; };
 		A3E5F62F2BD1A01100C96546 /* ReviewHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewHandler.swift; sourceTree = "<group>"; };
+		A3F418692C0AC96C0097F28C /* BetCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetCalculator.swift; sourceTree = "<group>"; };
+		A3F4186D2C0AE6F10097F28C /* BetCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetCalculatorTests.swift; sourceTree = "<group>"; };
 		A3F54AEE2BBDE56600F12D95 /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
 		C462066C297BFAC900E70051 /* SureBet Profit Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SureBet Profit Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C462066F297BFAC900E70051 /* SurebetCalculatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurebetCalculatorApp.swift; sourceTree = "<group>"; };
@@ -189,6 +193,7 @@
 		A327F8012ACC12C600E59355 /* SurebetCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				A3F418682C0AC95E0097F28C /* BetCalculator */,
 				A3D1E1202AC6FB060054D846 /* Models */,
 				A39911582ACADF570010A0AC /* Views */,
 				A39911592ACADF610010A0AC /* ViewModels */,
@@ -217,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				A346DD802BC5E41000763539 /* SurebetCalculatorViewModelTests.swift */,
+				A3F4186D2C0AE6F10097F28C /* BetCalculatorTests.swift */,
 			);
 			path = SurebetCalculatorTests;
 			sourceTree = "<group>";
@@ -254,6 +260,14 @@
 				A31C822A2BBC9F7600556855 /* FocusableField.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		A3F418682C0AC95E0097F28C /* BetCalculator */ = {
+			isa = PBXGroup;
+			children = (
+				A3F418692C0AC96C0097F28C /* BetCalculator.swift */,
+			);
+			path = BetCalculator;
 			sourceTree = "<group>";
 		};
 		C4620663297BFAC900E70051 = {
@@ -409,6 +423,7 @@
 			files = (
 				A346DD812BC5E41000763539 /* SurebetCalculatorViewModelTests.swift in Sources */,
 				A32D5BD42BD17CF100200A2B /* OnboardingViewModelTests.swift in Sources */,
+				A3F4186E2C0AE6F10097F28C /* BetCalculatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +452,7 @@
 				A3245A922ACC6D700062A171 /* OnboardingView.swift in Sources */,
 				A31C82272BBC9F5400556855 /* NumberOfRows.swift in Sources */,
 				A3245A942ACC6DD20062A171 /* OnboardingViewModel.swift in Sources */,
+				A3F4186A2C0AC96C0097F28C /* BetCalculator.swift in Sources */,
 				A3245AA32ACC93D70062A171 /* OnboardingButton.swift in Sources */,
 				A31C82332BBC9FF500556855 /* TotalRowView.swift in Sources */,
 				A31C823F2BBCA0B100556855 /* NavigationClearButton.swift in Sources */,

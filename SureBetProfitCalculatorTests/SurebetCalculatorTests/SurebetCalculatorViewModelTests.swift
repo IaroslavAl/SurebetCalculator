@@ -9,7 +9,6 @@ import XCTest
 @testable import SureBet_Profit_Calculator
 
 final class SurebetCalculatorViewModelTests: XCTestCase {
-    
     func testSelectRow() {
         // Given
         let viewModel = SurebetCalculatorViewModel()

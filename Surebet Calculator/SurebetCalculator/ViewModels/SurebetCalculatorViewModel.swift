@@ -59,7 +59,7 @@ final class SurebetCalculatorViewModel: ObservableObject {
 }
 
 extension SurebetCalculatorViewModel {
-    var indexesOfDisplayedRows: Range<Int> {
+    var displayedRowIndexes: Range<Int> {
         0..<selectedNumberOfRows.rawValue
     }
 }
@@ -134,34 +134,13 @@ private extension SurebetCalculatorViewModel {
 }
 
 private extension SurebetCalculatorViewModel {
-    var surebet: Double {
-        rows[indexesOfDisplayedRows]
-            .compactMap { $0.coefficient.formatToDouble() }
-            .reduce(0) { $0 + (1 / $1) }
-    }
-    
-    var isAllBetSizes: Bool {
-        rows[indexesOfDisplayedRows]
-            .map(\.betSize)
-            .allSatisfy {
-                $0.isValidDouble()
-                && !$0.isEmpty
-            }
-    }
-    
-    var isAllCoefficient: Bool {
-        rows[indexesOfDisplayedRows]
-            .map(\.coefficient)
-            .allSatisfy { $0.formatToDouble() ?? 0 > 0 }
-    }
-    
     func setTotalBetSize(text: String) {
         if total.betSize != text, selectedRow != .total {
             select(.total)
         }
         total.betSize = text
         if text.isEmpty {
-            indexesOfDisplayedRows.forEach {
+            displayedRowIndexes.forEach {
                 rows[$0].betSize.removeAll()
             }
         }
@@ -180,7 +159,7 @@ private extension SurebetCalculatorViewModel {
     }
     
     func setTotalFromBetSizes() {
-        let sumOfBetSizes = rows[indexesOfDisplayedRows]
+        let sumOfBetSizes = rows[displayedRowIndexes]
             .compactMap { $0.betSize.formatToDouble() }
             .reduce(0) { $0 + $1 }
         total.betSize = sumOfBetSizes == 0 ? "" : sumOfBetSizes.formatToString()
@@ -213,108 +192,16 @@ private extension SurebetCalculatorViewModel {
             rows[$0].income = "0"
         }
     }
-}
-
-// MARK: - Calculations
-
-private extension SurebetCalculatorViewModel {
-    var calculationMethod: CalculationMethod? {
-        guard isAllCoefficient else {
-            return .none
-        }
-        switch selectedRow {
-        case .total:
-            if total.betSize.isValidDouble(), total.betSize != "" {
-                return .total
-            }
-        case let .row(id):
-            if rows[id].betSize.isValidDouble() {
-                return .row(id)
-            }
-        case .none:
-            if isAllBetSizes {
-                return .rows
-            }
-        }
-        return .none
-    }
     
     func calculate() {
-        switch calculationMethod {
-        case .total:
-            calculateTotal()
-        case .rows:
-            calculateRows()
-        case let .row(id):
-            calculateRow(id)
-        case .none:
-            break
-        }
-    }
-    
-    func calculateTotal() {
-        calculateRowsBetSizesAndIncomes()
-        let profitPercentage = (100 / surebet) - 100
-        total.profitPercentage = profitPercentage.formatToString(isPercent: true)
-    }
-    
-    func calculateRows() {
-        let totalBetSize = indexesOfDisplayedRows
-            .compactMap { rows[$0].betSize.formatToDouble() }
-            .reduce(0) { $0 + $1 }
-        indexesOfDisplayedRows.forEach {
-            let coefficient = rows[$0].coefficient.formatToDouble()
-            let betSize = rows[$0].betSize.formatToDouble()
-            if let coefficient, let betSize {
-                rows[$0].income = calculateIncome(
-                    coefficient: coefficient,
-                    betSize: betSize,
-                    totalBetSize: totalBetSize
-                )
-            }
-        }
-        calculateProfitPercentage(totalBetSize: totalBetSize)
-    }
-    
-    func calculateRow(_ id: Int) {
-        let coefficient = rows[id].coefficient.formatToDouble()
-        let betSize = rows[id].betSize.formatToDouble()
-        if let coefficient, let betSize {
-            let totalBetSize = (betSize / (1 / coefficient / surebet))
-            calculateProfitPercentage(totalBetSize: totalBetSize)
-        }
-        calculateRowsBetSizesAndIncomes()
-    }
-    
-    func calculateRowsBetSizesAndIncomes() {
-        indexesOfDisplayedRows.forEach {
-            let coefficient = rows[$0].coefficient.formatToDouble()
-            let totalBetSize = total.betSize.formatToDouble()
-            if let coefficient, let totalBetSize {
-                let betSize = 1 / coefficient / surebet * totalBetSize
-                rows[$0].betSize = betSize.formatToString()
-                rows[$0].income = calculateIncome(
-                    coefficient: coefficient,
-                    betSize: betSize,
-                    totalBetSize: totalBetSize
-                )
-            }
-        }
-    }
-    
-    func calculateProfitPercentage(totalBetSize: Double) {
-        let profitPercentage = (100 / surebet) - 100
-        total.betSize = totalBetSize.formatToString()
-        total.profitPercentage = profitPercentage.formatToString(isPercent: true)
-    }
-    
-    func calculateIncome(
-        coefficient: Double,
-        betSize: Double,
-        totalBetSize: Double
-    ) -> String {
-        let winning = coefficient * betSize
-        let income = winning - totalBetSize
-        return income.formatToString()
+        let calculator = BetCalculator(
+            total: total,
+            rows: rows,
+            selectedRow: selectedRow,
+            displayedRowIndexes: displayedRowIndexes
+        )
+        let (updatedTotal, updatedRows) = calculator.calculate()
+        total = updatedTotal ?? total
+        rows = updatedRows ?? rows
     }
 }

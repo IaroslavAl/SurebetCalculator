@@ -38,7 +38,7 @@ struct SurebetCalculatorView: View {
 private extension SurebetCalculatorView {
     var rowsView: some View {
         VStack(spacing: rowsSpacing) {
-            ForEach(viewModel.indexesOfDisplayedRows, id: \.self) { id in
+            ForEach(viewModel.displayedRowIndexes, id: \.self) { id in
                 RowView(id: id)
             }
             .transition(.move(edge: .leading))
