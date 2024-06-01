@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct OnboardingTabView: View {
-    @EnvironmentObject private var vm: OnboardingViewModel
-    
+    @EnvironmentObject private var viewModel: OnboardingViewModel
+
     var body: some View {
         TabView(selection: selection) {
-            ForEach(vm.pages.indices, id: \.self) { index in
-                OnboardingPageView(page: vm.pages[index])
+            ForEach(viewModel.pages.indices, id: \.self) { index in
+                OnboardingPageView(page: viewModel.pages[index])
                     .tag(index)
             }
         }
         .tabViewStyle(.page(indexDisplayMode: .never))
-        .animation(.default, value: vm.currentPage)
+        .animation(.default, value: viewModel.currentPage)
         .transition(.move(edge: .trailing))
     }
 }
@@ -26,8 +26,8 @@ struct OnboardingTabView: View {
 private extension OnboardingTabView {
     var selection: Binding<Int> {
         .init(
-            get: { vm.currentPage },
-            set: { vm.send(.setCurrentPage($0)) }
+            get: { viewModel.currentPage },
+            set: { viewModel.send(.setCurrentPage($0)) }
         )
     }
 }

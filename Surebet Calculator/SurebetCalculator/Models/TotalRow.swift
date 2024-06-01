@@ -8,8 +8,7 @@
 import Foundation
 
 struct TotalRow: Equatable {
-    var isON: Bool = true
-    var betSize: String = ""
-    var profitPercentage: String = "0%"
+    var isON = true
+    var betSize = ""
+    var profitPercentage = "0%"
 }
-

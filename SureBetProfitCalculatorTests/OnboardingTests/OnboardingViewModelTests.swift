@@ -5,42 +5,41 @@
 //  Created by Iaroslav Beldin on 18.04.2024.
 //
 
-import XCTest
 @testable import SureBet_Profit_Calculator
+import XCTest
 
 final class OnboardingViewModelTests: XCTestCase {
-    
     func testSetCurrentPage() {
         // Given
-        let vm = OnboardingViewModel()
-        
+        let viewModel = OnboardingViewModel()
+
         // When
-        vm.send(.setCurrentPage(1))
-        
+        viewModel.send(.setCurrentPage(1))
+
         // Then
-        XCTAssertEqual(vm.currentPage, 1)
+        XCTAssertEqual(viewModel.currentPage, 1)
     }
-    
+
     func testSetCurrentPageWhenCurrentPageIsOutOfRange() {
         // Given
-        let vm = OnboardingViewModel()
-        
+        let viewModel = OnboardingViewModel()
+
         // When
-        vm.send(.setCurrentPage(100))
-        
+        viewModel.send(.setCurrentPage(100))
+
         // Then
-        XCTAssertEqual(vm.currentPage, 0)
-        XCTAssert(vm.onboardingIsShown)
+        XCTAssertEqual(viewModel.currentPage, 0)
+        XCTAssert(viewModel.onboardingIsShown)
     }
-    
+
     func testDismiss() {
         // Given
-        let vm = OnboardingViewModel()
-        
+        let viewModel = OnboardingViewModel()
+
         // When
-        vm.send(.dismiss)
-        
+        viewModel.send(.dismiss)
+
         // Then
-        XCTAssert(vm.onboardingIsShown)
+        XCTAssert(viewModel.onboardingIsShown)
     }
 }

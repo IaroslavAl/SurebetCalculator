@@ -10,7 +10,7 @@ import SwiftUI
 struct OnboardingPage: Identifiable {
     let image: String
     let description: String
-    
+
     static func createPages() -> [OnboardingPage] {
         [
             .init(image: image1, description: description1),
@@ -18,7 +18,7 @@ struct OnboardingPage: Identifiable {
             .init(image: image3, description: description3)
         ]
     }
-    
+
     var id: String { image }
 }
 

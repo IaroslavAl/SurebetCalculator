@@ -11,18 +11,18 @@ final class OnboardingViewModel: ObservableObject {
     @Published private(set) var currentPage: Int
     @Published private(set) var onboardingIsShown: Bool
     let pages: [OnboardingPage]
-    
+
     init() {
         self.currentPage = 0
         self.onboardingIsShown = false
         self.pages = OnboardingPage.createPages()
     }
-    
+
     enum ViewAction {
         case setCurrentPage(Int)
         case dismiss
     }
-    
+
     func send(_ action: ViewAction) {
         switch action {
         case let .setCurrentPage(index):
@@ -41,7 +41,7 @@ private extension OnboardingViewModel {
             dismiss()
         }
     }
-    
+
     func dismiss() {
         onboardingIsShown = true
     }

@@ -9,9 +9,9 @@ import SwiftUI
 
 struct ToggleButton: View {
     @EnvironmentObject private var viewModel: SurebetCalculatorViewModel
-    
+
     let row: RowType
-    
+
     var body: some View {
         Button(action: actionWithImpactFeedback, label: label)
             .animation(.easeInOut(duration: animationDuration), value: isON)
@@ -35,7 +35,7 @@ private extension ToggleButton {
     var horizontalPadding: CGFloat { iPad ? 12 : 8 }
     var transition: AnyTransition { .opacity.combined(with: .scale) }
     var animationDuration: Double { 0.25 }
-    
+
     func label() -> some View {
         if isON {
             Image(systemName: "soccerball")
@@ -51,7 +51,7 @@ private extension ToggleButton {
                 .transition(transition)
         }
     }
-    
+
     func actionWithImpactFeedback() {
         let impactFeedback = UIImpactFeedbackGenerator(style: .heavy)
         viewModel.send(.selectRow(row))

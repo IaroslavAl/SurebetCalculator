@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct OnboardingCloseButton: View {
-    @EnvironmentObject private var vm: OnboardingViewModel
-    
+    @EnvironmentObject private var viewModel: OnboardingViewModel
+
     var body: some View {
         Button(action: action) {
             label
@@ -20,11 +20,11 @@ struct OnboardingCloseButton: View {
 
 private extension OnboardingCloseButton {
     var imageName: String { "xmark" }
-    
+
     func action() {
-        vm.send(.dismiss)
+        viewModel.send(.dismiss)
     }
-    
+
     var label: some View {
         Image(systemName: imageName)
             .font(.title)

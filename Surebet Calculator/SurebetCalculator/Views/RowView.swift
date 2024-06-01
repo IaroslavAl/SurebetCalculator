@@ -9,9 +9,9 @@ import SwiftUI
 
 struct RowView: View {
     @EnvironmentObject private var viewModel: SurebetCalculatorViewModel
-    
+
     let id: Int
-    
+
     var body: some View {
         HStack(alignment: .bottom, spacing: 0) {
             ToggleButton(row: .row(id))
@@ -31,7 +31,7 @@ private extension RowView {
     var incomeText: String { "Income" }
     var iPad: Bool { UIDevice.current.userInterfaceIdiom == .pad }
     var spacing: CGFloat { iPad ? 12 : 8 }
-    
+
     var betSize: some View {
         VStack(spacing: spacing) {
             if id == 0 {
@@ -43,7 +43,7 @@ private extension RowView {
             )
         }
     }
-    
+
     var coefficient: some View {
         VStack(spacing: spacing) {
             if id == 0 {
@@ -55,7 +55,7 @@ private extension RowView {
             )
         }
     }
-    
+
     var income: some View {
         VStack(spacing: spacing) {
             if id == 0 {
@@ -74,4 +74,3 @@ private extension RowView {
         .environmentObject(SurebetCalculatorViewModel())
         .padding(.trailing)
 }
-

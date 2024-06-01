@@ -10,7 +10,8 @@ import SwiftUI
 struct CalculatorTextFieldStyle: TextFieldStyle {
     let isEnabled: Bool
     let isValid: Bool
-    
+
+    // swiftlint:disable:next identifier_name
     func _body(configuration: TextField<Self._Label>) -> some View {
         configuration
             .multilineTextAlignment(.center)

@@ -10,10 +10,10 @@ import SwiftUI
 struct TextFieldView: View {
     @EnvironmentObject private var viewModel: SurebetCalculatorViewModel
     @FocusState private var isFocused: FocusableField?
-    
+
     let placeholder: String
     let focusableField: FocusableField
-    
+
     var body: some View {
         TextField(placeholder, text: bindingText)
             .textFieldStyle(
@@ -35,6 +35,7 @@ struct TextFieldView: View {
                     viewModel.send(.setFocus(focus))
                 }
             }
+            .accessibilityAddTraits(.isButton)
     }
 }
 
@@ -45,7 +46,7 @@ private extension TextFieldView {
             set: { viewModel.send(.setTextFieldText(focusableField, $0)) }
         )
     }
-    
+
     var isDisabled: Bool {
         switch (viewModel.selectedRow, focusableField) {
         case (_, .rowCoefficient):
@@ -54,17 +55,16 @@ private extension TextFieldView {
             return false
         case (.total, .totalBetSize):
             return false
-        case (let .row(selectedId), let .rowBetSize(currentId)):
+        case let (.row(selectedId), .rowBetSize(currentId)):
             if selectedId == currentId {
                 return false
-            } else {
-                return true
             }
+            return true
         default:
             return true
         }
     }
-    
+
     var text: String {
         switch focusableField {
         case .totalBetSize:

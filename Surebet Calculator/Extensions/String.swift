@@ -17,7 +17,7 @@ extension String {
         }
         return nil
     }
-    
+
     func isValidDouble() -> Bool {
         self.formatToDouble() != nil
         || self.isEmpty

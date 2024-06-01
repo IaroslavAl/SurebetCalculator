@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SurebetCalculatorView: View {
     @EnvironmentObject private var viewModel: SurebetCalculatorViewModel
-    
+
     var body: some View {
         VStack(spacing: spacing) {
             PickerView()
@@ -46,7 +46,7 @@ private extension SurebetCalculatorView {
         }
         .padding(.trailing, horizontalPadding)
     }
-    
+
     @ToolbarContentBuilder
     func toolbar() -> some ToolbarContent {
         ToolbarItem(placement: .topBarTrailing) {

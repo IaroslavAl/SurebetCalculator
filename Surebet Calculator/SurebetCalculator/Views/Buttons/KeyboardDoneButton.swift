@@ -9,7 +9,7 @@ import SwiftUI
 
 struct KeyboardDoneButton: View {
     @EnvironmentObject private var viewModel: SurebetCalculatorViewModel
-    
+
     var body: some View {
         Button(text) {
             viewModel.send(.hideKeyboard)

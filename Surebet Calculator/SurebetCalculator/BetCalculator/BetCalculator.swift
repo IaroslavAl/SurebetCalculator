@@ -13,7 +13,7 @@ struct BetCalculator {
     let rows: [Row]
     let selectedRow: RowType?
     let displayedRowIndexes: Range<Int>
-    
+
     /// Performs calculations based on the selected method and updates totals and rows.
     /// - Returns: A tuple of updated total and rows.
     func calculate() -> (total: TotalRow?, rows: [Row]?) {
@@ -37,28 +37,28 @@ private extension BetCalculator {
             .compactMap { $0.coefficient.formatToDouble() }
             .reduce(0) { $0 + (1 / $1) }
     }
-    
+
     /// Verifies that all displayed rows have valid and non-empty bet sizes.
     var hasValidBetSizes: Bool {
         rows[displayedRowIndexes]
             .map(\.betSize)
             .allSatisfy { $0.isValidDouble() && !$0.isEmpty }
     }
-    
+
     /// Checks if all displayed coefficients can be converted to doubles and are positive.
     var hasValidCoefficients: Bool {
         rows[displayedRowIndexes]
             .map(\.coefficient)
             .allSatisfy { $0.formatToDouble() ?? 0 > 0 }
     }
-    
+
     /// Determines the calculation method based on the current input validity.
     var calculationMethod: CalculationMethod? {
         guard hasValidCoefficients else {
             return .none
         }
         switch selectedRow {
-        case .total where total.betSize.isValidDouble() && total.betSize != "":
+        case .total where total.betSize.isValidDouble() && !total.betSize.isEmpty:
             return .total
         case let .row(id) where rows[id].betSize.isValidDouble():
             return .row(id)
@@ -68,7 +68,7 @@ private extension BetCalculator {
             return .none
         }
     }
-    
+
     /// Calculates total for all rows considering current bet sizes.
     /// - Returns: Updated total and rows.
     func calculateTotal() -> (TotalRow?, [Row]?) {
@@ -78,7 +78,7 @@ private extension BetCalculator {
         total.profitPercentage = profitPercentage.formatToString(isPercent: true)
         return (total, rows)
     }
-    
+
     /// Updates bet sizes and incomes for each row and recalculates total accordingly.
     /// - Returns: Updated total and rows.
     func calculateRows() -> (TotalRow?, [Row]?) {
@@ -102,7 +102,7 @@ private extension BetCalculator {
         total.profitPercentage = calculateProfitPercentage(totalBetSize: totalBetSize)
         return (total, rows)
     }
-    
+
     /// Calculates for a specific row and updates total and other rows accordingly.
     /// - Parameter id: Index of the row.
     /// - Returns: Updated total and rows.
@@ -119,7 +119,7 @@ private extension BetCalculator {
         rows = calculateRowsBetSizesAndIncomes(total: total, rows: rows)
         return (total, rows)
     }
-    
+
     /// Adjusts bet sizes and incomes based on total bet size and each row's coefficient.
     /// - Parameters:
     ///   - total: Current total info.
@@ -127,13 +127,13 @@ private extension BetCalculator {
     /// - Returns: Updated rows.
     func calculateRowsBetSizesAndIncomes(total: TotalRow, rows: [Row]) -> [Row] {
         var updatedRows = rows
-        displayedRowIndexes.forEach {
-            let coefficient = rows[$0].coefficient.formatToDouble()
+        displayedRowIndexes.forEach { index in
+            let coefficient = rows[index].coefficient.formatToDouble()
             let totalBetSize = total.betSize.formatToDouble()
             if let coefficient, let totalBetSize {
                 let betSize = 1 / coefficient / surebetValue * totalBetSize
-                updatedRows[$0].betSize = betSize.formatToString()
-                updatedRows[$0].income = calculateIncome(
+                updatedRows[index].betSize = betSize.formatToString()
+                updatedRows[index].income = calculateIncome(
                     coefficient: coefficient,
                     betSize: betSize,
                     totalBetSize: totalBetSize
@@ -142,7 +142,7 @@ private extension BetCalculator {
         }
         return updatedRows
     }
-    
+
     /// Calculates and formats profit percentage from the total bet size.
     /// - Parameter totalBetSize: Total size of bets.
     /// - Returns: Formatted profit percentage.
@@ -150,7 +150,7 @@ private extension BetCalculator {
         let profitPercentage = (100 / surebetValue) - 100
         return profitPercentage.formatToString(isPercent: true)
     }
-    
+
     /// Calculates and formats income for a given bet.
     /// - Parameters:
     ///   - coefficient: Coefficient for the bet.

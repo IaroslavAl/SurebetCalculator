@@ -10,7 +10,7 @@ import SwiftUI
 struct TextView: View {
     let text: String
     let isPercent: Bool
-    
+
     var body: some View {
         Text(text)
             .padding(textPadding)
@@ -28,13 +28,12 @@ private extension TextView {
     var frameHeight: CGFloat { iPad ? 60 : 40 }
     var cornerRadius: CGFloat { iPad ? 15 : 10 }
     var color: Color { isNumberNotNegative(text) ? .green : .red }
-    
+
     func isNumberNotNegative(_ text: String) -> Bool {
         if let text = text.formatToDouble() {
             return text >= 0
-        } else {
-            return true
         }
+        return true
     }
 }
 

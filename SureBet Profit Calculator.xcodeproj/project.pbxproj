@@ -270,6 +270,13 @@
 			path = BetCalculator;
 			sourceTree = "<group>";
 		};
+		A3F418702C0AF15B0097F28C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C4620663297BFAC900E70051 = {
 			isa = PBXGroup;
 			children = (
@@ -277,6 +284,7 @@
 				C462066E297BFAC900E70051 /* SureBet Calculator */,
 				A346DD762BC5E38100763539 /* SureBetProfitCalculatorTests */,
 				C462066D297BFAC900E70051 /* Products */,
+				A3F418702C0AF15B0097F28C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -327,6 +335,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				A36529B12C0B0276000AFC01 /* PBXTargetDependency */,
 				A346DD7A2BC5E38100763539 /* PBXTargetDependency */,
 			);
 			name = SureBetProfitCalculatorTests;
@@ -345,6 +354,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				A3FD1ED02C0AF47B00CC3B6D /* PBXTargetDependency */,
 			);
 			name = "SureBet Profit Calculator";
 			packageProductDependencies = (
@@ -386,6 +396,7 @@
 			mainGroup = C4620663297BFAC900E70051;
 			packageReferences = (
 				A391C9212BCC334900D50977 /* XCRemoteSwiftPackageReference "appmetrica-sdk-ios" */,
+				A3F4186F2C0AF0B70097F28C /* XCRemoteSwiftPackageReference "SwiftLint" */,
 			);
 			productRefGroup = C462066D297BFAC900E70051 /* Products */;
 			projectDirPath = "";
@@ -473,6 +484,14 @@
 			isa = PBXTargetDependency;
 			target = C462066B297BFAC900E70051 /* SureBet Profit Calculator */;
 			targetProxy = A346DD792BC5E38100763539 /* PBXContainerItemProxy */;
+		};
+		A36529B12C0B0276000AFC01 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = A36529B02C0B0276000AFC01 /* SwiftLintBuildToolPlugin */;
+		};
+		A3FD1ED02C0AF47B00CC3B6D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = A3FD1ECF2C0AF47B00CC3B6D /* SwiftLintBuildToolPlugin */;
 		};
 /* End PBXTargetDependency section */
 
@@ -763,9 +782,22 @@
 				minimumVersion = 5.2.0;
 			};
 		};
+		A3F4186F2C0AF0B70097F28C /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/SwiftLint.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.55.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A36529B02C0B0276000AFC01 /* SwiftLintBuildToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A3F4186F2C0AF0B70097F28C /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = "plugin:SwiftLintBuildToolPlugin";
+		};
 		A391C9222BCC334900D50977 /* AppMetricaAdSupport */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A391C9212BCC334900D50977 /* XCRemoteSwiftPackageReference "appmetrica-sdk-ios" */;
@@ -780,6 +812,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A391C9212BCC334900D50977 /* XCRemoteSwiftPackageReference "appmetrica-sdk-ios" */;
 			productName = AppMetricaCrashes;
+		};
+		A3FD1ECF2C0AF47B00CC3B6D /* SwiftLintBuildToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A3F4186F2C0AF0B70097F28C /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = "plugin:SwiftLintBuildToolPlugin";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

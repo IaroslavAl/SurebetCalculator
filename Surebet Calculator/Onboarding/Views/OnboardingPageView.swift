@@ -9,13 +9,14 @@ import SwiftUI
 
 struct OnboardingPageView: View {
     let page: OnboardingPage
-    
+
     var body: some View {
         VStack(spacing: .zero) {
             Image(page.image)
                 .resizable()
                 .scaledToFit()
                 .padding(.vertical)
+                .accessibilityLabel("Image")
             Spacer()
             Text(page.description)
                 .font(.title)

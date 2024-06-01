@@ -11,12 +11,14 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var surebetCalculatorViewModel = SurebetCalculatorViewModel()
     @StateObject private var onboardingViewModel = OnboardingViewModel()
-    
-    @AppStorage("onboardingIsShown") private var onboardingIsShown: Bool = false
-    @AppStorage("numberOfOpenings") private var numberOfOpenings: Int = 0
-    
-    @State private var isAnimation: Bool = false
-    
+
+    @AppStorage("onboardingIsShown")
+    private var onboardingIsShown = false
+    @AppStorage("numberOfOpenings")
+    private var numberOfOpenings = 0
+
+    @State private var isAnimation = false
+
     var body: some View {
         Group {
             if onboardingIsShown {
@@ -46,7 +48,7 @@ private extension ContentView {
             isAnimation = true
         }
     }
-    
+
     func showRequestReview() {
         numberOfOpenings += 1
         if numberOfOpenings >= 5, onboardingIsShown {

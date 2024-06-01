@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct OnboardingButton: View {
-    @EnvironmentObject private var vm: OnboardingViewModel
-    
+    @EnvironmentObject private var viewModel: OnboardingViewModel
+
     var body: some View {
         Button(action: action) {
             label
@@ -20,22 +20,22 @@ struct OnboardingButton: View {
 private extension OnboardingButton {
     var text: String {
         let firstPage = 0
-        let lastPage = vm.pages.index(before: vm.pages.endIndex)
-        if vm.currentPage == firstPage {
+        let lastPage = viewModel.pages.index(before: viewModel.pages.endIndex)
+        if viewModel.currentPage == firstPage {
             return "More details"
-        } else if vm.currentPage == lastPage {
-            return "Close"
-        } else {
-            return "Next"
         }
+        if viewModel.currentPage == lastPage {
+            return "Close"
+        }
+        return "Next"
     }
     var iPad: Bool { UIDevice.current.userInterfaceIdiom == .pad }
     var cornerRadius: CGFloat { iPad ? 18 : 12 }
-    
+
     func action() {
-        vm.send(.setCurrentPage(vm.currentPage + 1))
+        viewModel.send(.setCurrentPage(viewModel.currentPage + 1))
     }
-    
+
     var label: some View {
         Text(text)
             .foregroundColor(.white)
@@ -44,7 +44,7 @@ private extension OnboardingButton {
             .padding()
             .background(.green)
             .cornerRadius(cornerRadius)
-            .animation(.none, value: vm.currentPage)
+            .animation(.none, value: viewModel.currentPage)
     }
 }
 
@@ -52,4 +52,3 @@ private extension OnboardingButton {
     OnboardingButton()
         .environmentObject(OnboardingViewModel())
 }
-

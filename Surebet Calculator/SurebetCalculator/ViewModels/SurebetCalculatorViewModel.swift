@@ -13,7 +13,7 @@ final class SurebetCalculatorViewModel: ObservableObject {
     @Published private(set) var selectedNumberOfRows: NumberOfRows
     @Published private(set) var selectedRow: RowType?
     @Published private(set) var focus: FocusableField?
-    
+
     init(
         total: TotalRow = TotalRow(),
         rows: [Row] = Row.createRows(),
@@ -27,7 +27,7 @@ final class SurebetCalculatorViewModel: ObservableObject {
         self.selectedRow = selectedRow
         self.focus = focus
     }
-    
+
     enum ViewAction {
         case selectRow(RowType)
         case selectNumberOfRows(NumberOfRows)
@@ -37,7 +37,7 @@ final class SurebetCalculatorViewModel: ObservableObject {
         case clearAll
         case hideKeyboard
     }
-    
+
     func send(_ action: ViewAction) {
         switch action {
         case let .selectRow(row):
@@ -81,7 +81,7 @@ private extension SurebetCalculatorViewModel {
         }
         calculate()
     }
-    
+
     func select(_ numberOfRows: NumberOfRows) {
         selectedNumberOfRows = numberOfRows
         let indexesOfUndisplayedRows = selectedNumberOfRows.rawValue..<rows.count
@@ -91,7 +91,7 @@ private extension SurebetCalculatorViewModel {
         clear(indexesOfUndisplayedRows)
         calculate()
     }
-    
+
     func set(_ textField: FocusableField, text: String) {
         switch textField {
         case .totalBetSize:
@@ -103,11 +103,11 @@ private extension SurebetCalculatorViewModel {
         }
         calculate()
     }
-    
+
     func set(_ focus: FocusableField?) {
         self.focus = focus
     }
-    
+
     func clearFocusableField() {
         switch focus {
         case .totalBetSize:
@@ -122,12 +122,12 @@ private extension SurebetCalculatorViewModel {
             break
         }
     }
-    
+
     func clearAll() {
         clearTotal()
         clear(rows.indices)
     }
-    
+
     func hideKeyboard() {
         focus = .none
     }
@@ -145,7 +145,7 @@ private extension SurebetCalculatorViewModel {
             }
         }
     }
-    
+
     func setRowBetSize(id: Int, text: String) {
         rows[id].betSize = text
         if text.isEmpty, selectedRow != .none {
@@ -157,18 +157,18 @@ private extension SurebetCalculatorViewModel {
             setTotalFromBetSizes()
         }
     }
-    
+
     func setTotalFromBetSizes() {
         let sumOfBetSizes = rows[displayedRowIndexes]
             .compactMap { $0.betSize.formatToDouble() }
             .reduce(0) { $0 + $1 }
         total.betSize = sumOfBetSizes == 0 ? "" : sumOfBetSizes.formatToString()
     }
-    
+
     func setRowCoefficient(id: Int, text: String) {
         rows[id].coefficient = text
     }
-    
+
     func deselectCurrentRow() {
         switch selectedRow {
         case .total:
@@ -179,12 +179,12 @@ private extension SurebetCalculatorViewModel {
             break
         }
     }
-    
+
     func clearTotal() {
         total.betSize.removeAll()
         total.profitPercentage = "0%"
     }
-    
+
     func clear(_ rowsRange: Range<Int>) {
         rowsRange.forEach {
             rows[$0].betSize.removeAll()
@@ -192,7 +192,7 @@ private extension SurebetCalculatorViewModel {
             rows[$0].income = "0"
         }
     }
-    
+
     func calculate() {
         let calculator = BetCalculator(
             total: total,

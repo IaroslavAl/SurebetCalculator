@@ -5,8 +5,9 @@
 //  Created by Iaroslav Beldin on 10.04.2024.
 //
 
-import XCTest
+// swiftlint:disable file_length
 @testable import SureBet_Profit_Calculator
+import XCTest
 
 final class SurebetCalculatorViewModelTests: XCTestCase {
     func testSelectRow() {
@@ -14,47 +15,43 @@ final class SurebetCalculatorViewModelTests: XCTestCase {
         let viewModel = SurebetCalculatorViewModel()
         let id = 0
         let row: RowType = .row(id)
-        
+
         // When
         viewModel.send(.selectRow(row))
-        
+
         // Then
         XCTAssertFalse(viewModel.total.isON)
         XCTAssert(viewModel.rows[id].isON)
         XCTAssertEqual(viewModel.selectedRow, row)
     }
-    
+
     func testSelectTotal() {
         // Given
-        let viewModel = SurebetCalculatorViewModel(
-            selectedRow: .none
-        )
+        let viewModel = SurebetCalculatorViewModel(selectedRow: .none)
         let row: RowType = .total
-        
+
         // When
         viewModel.send(.selectRow(row))
-        
+
         // Then
         XCTAssert(viewModel.total.isON)
         XCTAssertEqual(viewModel.selectedRow, row)
     }
-    
+
     func testSelectNone() {
         // Given
         let id = 0
-        let viewModel = SurebetCalculatorViewModel(
-            selectedRow: .row(id)
-        )
+        let viewModel = SurebetCalculatorViewModel(selectedRow: .row(id))
         let row: RowType = .row(id)
-        
+
         // When
         viewModel.send(.selectRow(row))
-        
+
         // Then
         XCTAssertFalse(viewModel.rows[id].isON)
         XCTAssertEqual(viewModel.selectedRow, .none)
     }
-    
+
     func testSelectNumberOfRowsWhenToDeselectAndClear() {
         // Given
         let initialNumberOfRows: NumberOfRows = .three
@@ -70,16 +67,16 @@ final class SurebetCalculatorViewModelTests: XCTestCase {
             selectedNumberOfRows: initialNumberOfRows,
             selectedRow: .row(id)
         )
-        
+
         // When
         viewModel.send(.selectNumberOfRows(newNumberOfRows))
-        
+
         // Then
         XCTAssertFalse(viewModel.rows[id].isON)
         XCTAssertEqual(viewModel.rows[id].betSize, "")
         XCTAssertEqual(viewModel.selectedNumberOfRows, newNumberOfRows)
     }
-    
+
     func testSetTotalBetSizeTextField() {
         // Given
         let viewModel = SurebetCalculatorViewModel(
@@ -94,16 +91,16 @@ final class SurebetCalculatorViewModelTests: XCTestCase {
         )
         let textField: FocusableField = .totalBetSize
         let text = ""
-        
+
         // When
         viewModel.send(.setTextFieldText(textField, text))
-        
+
         // Then
         XCTAssertEqual(viewModel.selectedRow, .total)
         XCTAssertEqual(viewModel.total.betSize, text)
         XCTAssertEqual(viewModel.rows[0].betSize, "")
     }
-    
+
     func testSetRowBetSize() {
         // Given
         let viewModel = SurebetCalculatorViewModel(
@@ -117,87 +114,83 @@ final class SurebetCalculatorViewModelTests: XCTestCase {
         )
         let textField: FocusableField = .rowBetSize(0)
         let text = ""
-        
+
         // When
         viewModel.send(.setTextFieldText(textField, text))
-        
+
         // Then
         XCTAssertEqual(viewModel.rows[0].betSize, text)
         XCTAssertEqual(viewModel.rows[1].betSize, "")
         XCTAssertEqual(viewModel.total.betSize, "")
     }
-    
+
     func testSetRowBetSizeWhenSelectedRowIsNone() {
         // Given
-        let viewModel = SurebetCalculatorViewModel(
-            selectedRow: .none
-        )
+        let viewModel = SurebetCalculatorViewModel(selectedRow: .none)
         let textField: FocusableField = .rowBetSize(0)
         let text = "777"
-        
+
         // When
         viewModel.send(.setTextFieldText(textField, text))
-        
+
         // Then
         XCTAssertEqual(viewModel.rows[0].betSize, text)
         XCTAssertEqual(viewModel.total.betSize, "777")
     }
-    
+
     func testSetRowBetSizeWhenSelectedRowIsNoneAndSumOfBetSizesEqualZero() {
         // Given
-        let viewModel = SurebetCalculatorViewModel(
-            selectedRow: .none
-        )
+        let viewModel = SurebetCalculatorViewModel(selectedRow: .none)
         let textField: FocusableField = .rowBetSize(0)
         let text = ""
-        
+
         // When
         viewModel.send(.setTextFieldText(textField, text))
-        
+
         // Then
         XCTAssertEqual(viewModel.rows[0].betSize, text)
         XCTAssertEqual(viewModel.total.betSize, "")
     }
-    
+
     func testSetRowCoefficient() {
         // Given
         let viewModel = SurebetCalculatorViewModel()
         let textField: FocusableField = .rowCoefficient(0)
         let text = ""
-        
+
         // When
         viewModel.send(.setTextFieldText(textField, text))
-        
+
         // Then
         XCTAssertEqual(viewModel.rows[0].coefficient, text)
     }
-    
+
     func testSetFocus() {
         // Given
         let viewModel = SurebetCalculatorViewModel()
         let field: FocusableField = .totalBetSize
-        
+
         // When
         viewModel.send(.setFocus(field))
-        
+
         // Then
         XCTAssertEqual(viewModel.focus, field)
     }
-    
+
     func testClearTotalBetSizeField() {
         // Given
         let viewModel = SurebetCalculatorViewModel(
             total: .init(betSize: "777"),
             focus: .totalBetSize
         )
-        
+
         // When
         viewModel.send(.clearFocusableField)
-        
+
         // Then
         XCTAssertEqual(viewModel.total.betSize, "")
     }
-    
+
     func testClearRowBetSizeField() {
         // Given
         let viewModel = SurebetCalculatorViewModel(
@@ -209,14 +202,14 @@ final class SurebetCalculatorViewModelTests: XCTestCase {
             ],
             focus: .rowBetSize(0)
         )
-        
+
         // When
         viewModel.send(.clearFocusableField)
-        
+
         // Then
         XCTAssertEqual(viewModel.rows[0].betSize, "")
     }
-    
+
     func testClearRowCoefficientField() {
         // Given
         let viewModel = SurebetCalculatorViewModel(
@@ -228,26 +221,24 @@ final class SurebetCalculatorViewModelTests: XCTestCase {
             ],
             focus: .rowCoefficient(0)
         )
-        
+
         // When
         viewModel.send(.clearFocusableField)
-        
+
         // Then
         XCTAssertEqual(viewModel.rows[0].coefficient, "")
     }
-    
+
     func testClearNoneField() {
         // Given
-        let viewModel = SurebetCalculatorViewModel(
-            focus: .none
-        )
-        
+        let viewModel = SurebetCalculatorViewModel(focus: .none)
+
         // When
         viewModel.send(.clearFocusableField)
-        
+
         // Then
     }
-    
+
     func testClearAll() {
         // Given
         let viewModel = SurebetCalculatorViewModel(
@@ -259,10 +250,10 @@ final class SurebetCalculatorViewModelTests: XCTestCase {
                 .init(id: 3)
             ]
         )
-        
+
         // When
         viewModel.send(.clearAll)
-        
+
         // Then
         XCTAssertEqual(viewModel.total.betSize, "")
         XCTAssertEqual(viewModel.total.profitPercentage, "0%")
@@ -270,20 +261,20 @@ final class SurebetCalculatorViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.rows[0].coefficient, "")
         XCTAssertEqual(viewModel.rows[0].income, "0")
     }
-    
+
     func testHideKeyboard() {
         // Given
         let viewModel = SurebetCalculatorViewModel(
             focus: .totalBetSize
         )
-        
+
         // When
         viewModel.send(.hideKeyboard)
-        
+
         // Then
         XCTAssertEqual(viewModel.focus, .none)
     }
-    
+
     func testCalculationMethodWhenSelectedRowIsTotalAndSelectedNumberOfRowsIsTwo() {
         // Given
         let viewModel = SurebetCalculatorViewModel(
@@ -295,10 +286,10 @@ final class SurebetCalculatorViewModelTests: XCTestCase {
             ],
             selectedNumberOfRows: .two
         )
-        
+
         // When
         viewModel.send(.setTextFieldText(.totalBetSize, "777"))
-        
+
         // Then
         XCTAssertEqual(
             viewModel.total,
@@ -337,7 +328,7 @@ final class SurebetCalculatorViewModelTests: XCTestCase {
             Row(id: 3)
         )
     }
-    
+
     func testCalculationMethodWhenSelectedRowIsRowAndSelectedNumberOfRowsIsThree() {
         // Given
         let viewModel = SurebetCalculatorViewModel(
@@ -351,10 +342,10 @@ final class SurebetCalculatorViewModelTests: XCTestCase {
             selectedNumberOfRows: .three,
             selectedRow: .row(0)
         )
-        
+
         // When
         viewModel.send(.setTextFieldText(.rowBetSize(0), "777"))
-        
+
         // Then
         XCTAssertEqual(
             viewModel.total,
@@ -399,7 +390,7 @@ final class SurebetCalculatorViewModelTests: XCTestCase {
             Row(id: 3)
         )
     }
-    
+
     func testCalculationMethodWhenSelectedRowIsNoneAndSelectedNumberOfRowsIsFour() {
         // Given
         let viewModel = SurebetCalculatorViewModel(
@@ -413,10 +404,10 @@ final class SurebetCalculatorViewModelTests: XCTestCase {
             selectedNumberOfRows: .four,
             selectedRow: .none
         )
-        
+
         // When
         viewModel.send(.setTextFieldText(.rowBetSize(3), "777"))
-        
+
         // Then
         XCTAssertEqual(
             viewModel.total,
@@ -467,7 +458,7 @@ final class SurebetCalculatorViewModelTests: XCTestCase {
             )
         )
     }
-    
+
     func testNoneCalculationMethod() {
         // Given
         let viewModel = SurebetCalculatorViewModel(
@@ -478,13 +469,13 @@ final class SurebetCalculatorViewModelTests: XCTestCase {
                 .init(id: 3)
             ]
         )
-        
+
         // When
         viewModel.send(.setTextFieldText(.totalBetSize, "xxx"))
-        
+
         // Then
     }
-    
+
     func testProfitPercentageDoesNotChangeForAllCoefficients() {
         // Given
         let viewModel = SurebetCalculatorViewModel(
@@ -495,10 +486,10 @@ final class SurebetCalculatorViewModelTests: XCTestCase {
                 .init(id: 3)
             ]
         )
-        
+
         // When
         viewModel.send(.setTextFieldText(.rowCoefficient(1), "3,33"))
-        
+
         // Then
         XCTAssertEqual(viewModel.total.profitPercentage, "0%")
     }

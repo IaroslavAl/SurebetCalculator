@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    @EnvironmentObject private var vm: OnboardingViewModel
+    @EnvironmentObject private var viewModel: OnboardingViewModel
     @Binding var onboardingIsShown: Bool
-    
+
     var body: some View {
         VStack(spacing: .zero) {
             OnboardingCloseButton()
@@ -18,9 +18,9 @@ struct OnboardingView: View {
             OnboardingIndex()
             OnboardingButton()
         }
-        .environmentObject(vm)
+        .environmentObject(viewModel)
         .padding()
-        .onChange(of: vm.onboardingIsShown) {
+        .onChange(of: viewModel.onboardingIsShown) {
             onboardingIsShown = $0
         }
     }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TotalRowView: View {
     @EnvironmentObject private var viewModel: SurebetCalculatorViewModel
-    
+
     var body: some View {
         HStack(alignment: .bottom, spacing: 0) {
             ToggleButton(row: .total)
@@ -28,7 +28,7 @@ private extension TotalRowView {
     var placeholder: String { "Total bet size" }
     var iPad: Bool { UIDevice.current.userInterfaceIdiom == .pad }
     var spacing: CGFloat { iPad ? 12 : 8 }
-    
+
     var totalBetSizeColumn: some View {
         VStack(spacing: spacing) {
             Text(betSizeLabel)
@@ -38,7 +38,7 @@ private extension TotalRowView {
             )
         }
     }
-    
+
     var profitPercentageColumn: some View {
         VStack(spacing: spacing) {
             Text(profitPercentageLabel)

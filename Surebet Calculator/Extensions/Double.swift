@@ -13,8 +13,8 @@ extension Double {
         formatter.numberStyle = .none
         formatter.minimumFractionDigits = 0
         formatter.maximumFractionDigits = 2
-        let formattedValue = formatter.string(from: NSNumber(value: self)) ?? "0.00"
-        let formattedString = isPercent ? formattedValue + "%" : formattedValue
-        return formattedString
+        // swiftlint:disable:next legacy_objc_type
+        let formattedValue = formatter.string(from: self as NSNumber) ?? "0.00"
+        return isPercent ? formattedValue + "%" : formattedValue
     }
 }
