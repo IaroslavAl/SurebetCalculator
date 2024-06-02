@@ -9,9 +9,6 @@ import StoreKit
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var surebetCalculatorViewModel = SurebetCalculatorViewModel()
-    @StateObject private var onboardingViewModel = OnboardingViewModel()
-
     @AppStorage("onboardingIsShown")
     private var onboardingIsShown = false
     @AppStorage("numberOfOpenings")
@@ -24,13 +21,11 @@ struct ContentView: View {
             if onboardingIsShown {
                 NavigationView {
                     SurebetCalculatorView()
-                        .environmentObject(surebetCalculatorViewModel)
                 }
                 .navigationViewStyle(.stack)
             } else {
                 if isAnimation {
                     OnboardingView(onboardingIsShown: $onboardingIsShown)
-                        .environmentObject(onboardingViewModel)
                         .transition(.move(edge: .bottom))
                 }
             }

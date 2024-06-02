@@ -38,5 +38,4 @@ private extension PickerView {
 
 #Preview {
     PickerView()
-        .environmentObject(SurebetCalculatorViewModel())
 }

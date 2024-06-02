@@ -23,5 +23,4 @@ private extension KeyboardDoneButton {
 
 #Preview {
     KeyboardDoneButton()
-        .environmentObject(SurebetCalculatorViewModel())
 }

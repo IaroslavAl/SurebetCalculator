@@ -18,7 +18,6 @@ struct TotalRowView: View {
                 profitPercentageColumn
             }
         }
-        .environmentObject(viewModel)
     }
 }
 
@@ -52,6 +51,5 @@ private extension TotalRowView {
 
 #Preview {
     TotalRowView()
-        .environmentObject(SurebetCalculatorViewModel())
         .padding(.trailing)
 }

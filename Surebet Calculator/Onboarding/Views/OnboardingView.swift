@@ -18,7 +18,6 @@ struct OnboardingView: View {
             OnboardingIndex()
             OnboardingButton()
         }
-        .environmentObject(viewModel)
         .padding()
         .onChange(of: viewModel.onboardingIsShown) {
             onboardingIsShown = $0
@@ -28,5 +27,4 @@ struct OnboardingView: View {
 
 #Preview {
     OnboardingView(onboardingIsShown: .constant(false))
-        .environmentObject(OnboardingViewModel())
 }

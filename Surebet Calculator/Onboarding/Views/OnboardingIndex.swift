@@ -44,5 +44,4 @@ private extension OnboardingIndex {
 
 #Preview {
     OnboardingIndex()
-        .environmentObject(OnboardingViewModel())
 }

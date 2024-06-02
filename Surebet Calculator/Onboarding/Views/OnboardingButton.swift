@@ -50,5 +50,4 @@ private extension OnboardingButton {
 
 #Preview {
     OnboardingButton()
-        .environmentObject(OnboardingViewModel())
 }

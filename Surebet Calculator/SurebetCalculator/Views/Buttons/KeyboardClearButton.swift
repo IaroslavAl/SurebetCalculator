@@ -22,5 +22,4 @@ struct KeyboardClearButton: View {
 
 #Preview {
     KeyboardClearButton()
-        .environmentObject(SurebetCalculatorViewModel())
 }

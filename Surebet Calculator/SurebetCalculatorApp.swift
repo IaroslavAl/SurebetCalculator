@@ -10,10 +10,16 @@ import SwiftUI
 
 @main
 struct SurebetCalculatorApp: App {
-//    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject private var surebetCalculatorViewModel = SurebetCalculatorViewModel()
+    @StateObject private var onboardingViewModel = OnboardingViewModel()
+
+    @UIApplicationDelegateAdaptor(AppDelegate.self) private var delegate
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(surebetCalculatorViewModel)
+                .environmentObject(onboardingViewModel)
         }
     }
 }

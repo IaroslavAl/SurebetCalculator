@@ -34,5 +34,4 @@ private extension OnboardingTabView {
 
 #Preview {
     OnboardingTabView()
-        .environmentObject(OnboardingViewModel())
 }

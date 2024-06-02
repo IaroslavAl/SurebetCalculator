@@ -61,5 +61,4 @@ private extension ToggleButton {
 
 #Preview {
     ToggleButton(row: .total)
-        .environmentObject(SurebetCalculatorViewModel())
 }

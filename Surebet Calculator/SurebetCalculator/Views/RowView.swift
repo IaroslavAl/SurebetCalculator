@@ -21,7 +21,6 @@ struct RowView: View {
                 income
             }
         }
-        .environmentObject(viewModel)
     }
 }
 
@@ -71,6 +70,5 @@ private extension RowView {
 
 #Preview {
     RowView(id: 0)
-        .environmentObject(SurebetCalculatorViewModel())
         .padding(.trailing)
 }

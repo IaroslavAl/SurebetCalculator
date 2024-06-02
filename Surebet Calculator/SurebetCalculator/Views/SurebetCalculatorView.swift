@@ -26,7 +26,6 @@ struct SurebetCalculatorView: View {
                 }
             )
         }
-        .environmentObject(viewModel)
         .navigationTitle(navigationTitle)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar(content: toolbar)
@@ -71,5 +70,4 @@ private extension SurebetCalculatorView {
 
 #Preview {
     SurebetCalculatorView()
-        .environmentObject(SurebetCalculatorViewModel())
 }
