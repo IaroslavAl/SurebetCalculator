@@ -64,7 +64,7 @@ final class SurebetCalculatorViewModelTests: XCTestCase {
         )
 
         // When
-        viewModel.send(.selectNumberOfRows(newNumberOfRows))
+        viewModel.send(.removeRow)
 
         // Then
         XCTAssertFalse(viewModel.rows[id].isON)

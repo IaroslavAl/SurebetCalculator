@@ -15,6 +15,7 @@
 
 /* Begin PBXFileReference section */
 		A328EB312C14B46500143A27 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A33867362CA8A175002D55B8 /* surebet-calculator.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "surebet-calculator.xctestplan"; sourceTree = "<group>"; };
 		A3428ABF2C14A40D00F501D3 /* SurebetCalculatorPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SurebetCalculatorPackage; sourceTree = "<group>"; };
 		C462066C297BFAC900E70051 /* surebet-calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "surebet-calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C462066F297BFAC900E70051 /* SurebetCalculatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurebetCalculatorApp.swift; sourceTree = "<group>"; };
@@ -53,6 +54,7 @@
 		C4620663297BFAC900E70051 = {
 			isa = PBXGroup;
 			children = (
+				A33867362CA8A175002D55B8 /* surebet-calculator.xctestplan */,
 				C462066E297BFAC900E70051 /* SurebetCalculator */,
 				C462066D297BFAC900E70051 /* Products */,
 				A328EB2A2C14B30D00143A27 /* Frameworks */,
@@ -117,7 +119,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1510;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					C462066B297BFAC900E70051 = {
 						CreatedOnToolsVersion = 14.2;
@@ -172,6 +174,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -233,6 +236,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -293,7 +297,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_ASSET_PATHS = "\"SurebetCalculator/Resources/Preview Content\"";
-				DEVELOPMENT_TEAM = 8P5A3CMFCU;
+				DEVELOPMENT_TEAM = 848LVZR9JB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SurebetCalculator/Info.plist;
@@ -332,7 +336,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_ASSET_PATHS = "\"SurebetCalculator/Resources/Preview Content\"";
-				DEVELOPMENT_TEAM = 8P5A3CMFCU;
+				DEVELOPMENT_TEAM = 848LVZR9JB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SurebetCalculator/Info.plist;

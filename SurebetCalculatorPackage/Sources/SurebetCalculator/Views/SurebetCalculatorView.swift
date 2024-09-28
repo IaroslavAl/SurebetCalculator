@@ -71,7 +71,7 @@ private extension SurebetCalculatorView {
                 UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
             }
     }
-    
+
     var removeButton: some View {
         Image(systemName: "minus.circle")
             .foregroundStyle(viewModel.selectedNumberOfRows == .two ? .gray : .red)

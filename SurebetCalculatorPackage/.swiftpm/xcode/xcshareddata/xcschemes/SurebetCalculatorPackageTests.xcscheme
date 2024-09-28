@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1510"
+   LastUpgradeVersion = "1600"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,7 +13,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:SurebetCalculatorPackageTests.xctestplan"
+            reference = "container:../surebet-calculator.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>
