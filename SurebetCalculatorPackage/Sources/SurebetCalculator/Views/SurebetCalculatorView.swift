@@ -1,3 +1,4 @@
+import Banner
 import SwiftUI
 
 struct SurebetCalculatorView: View {
@@ -8,6 +9,7 @@ struct SurebetCalculatorView: View {
             PickerView()
             ScrollView(showsIndicators: false) {
                 VStack(spacing: spacing) {
+                    Banner.view
                     TotalRowView()
                         .padding(.trailing, horizontalPadding)
                     rowsView

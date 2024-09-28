@@ -21,8 +21,43 @@ let package = Package(
             url: "https://github.com/realm/SwiftLint.git",
             .upToNextMinor(from: "0.55.0")
         ),
+        .package(
+            url: "https://github.com/SDWebImage/SDWebImageSwiftUI.git",
+            .upToNextMinor(from: "3.1.0")
+        ),
     ],
     targets: [
+        .target(
+            name: "AnalyticsManager",
+            dependencies: [
+                .product(
+                    name: "AppMetricaCore",
+                    package: "appmetrica-sdk-ios"
+                )
+            ],
+            plugins: [
+                .plugin(
+                    name: "SwiftLintBuildToolPlugin",
+                    package: "SwiftLint"
+                )
+            ]
+        ),
+        .target(
+            name: "Banner",
+            dependencies: [
+                "AnalyticsManager",
+                .product(
+                    name: "SDWebImageSwiftUI",
+                    package: "SDWebImageSwiftUI"
+                ),
+            ],
+            plugins: [
+                .plugin(
+                    name: "SwiftLintBuildToolPlugin",
+                    package: "SwiftLint"
+                )
+            ]
+        ),
         .target(
             name: "Onboarding",
             resources: [.process("Resources/Assets.xcassets")],
@@ -62,6 +97,9 @@ let package = Package(
         ),
         .target(
             name: "SurebetCalculator",
+            dependencies: [
+                "Banner",
+            ],
             plugins: [
                 .plugin(
                     name: "SwiftLintBuildToolPlugin",

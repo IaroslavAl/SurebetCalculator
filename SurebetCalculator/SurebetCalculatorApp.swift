@@ -18,7 +18,7 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
     ) -> Bool {
         #if !DEBUG
-        let apiKey = ProcessInfo.processInfo.environment["AppMetrica_Key"] ?? ""
+        let apiKey = "f7e1f335-475a-4b6c-ba4a-77988745bc7a"
         if let configuration = AppMetricaConfiguration(apiKey: apiKey) {
             AppMetrica.activate(with: configuration)
         }
