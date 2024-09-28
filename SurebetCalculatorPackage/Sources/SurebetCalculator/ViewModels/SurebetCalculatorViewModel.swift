@@ -23,7 +23,8 @@ final class SurebetCalculatorViewModel: ObservableObject {
 
     enum ViewAction {
         case selectRow(RowType)
-        case selectNumberOfRows(NumberOfRows)
+        case addRow
+        case removeRow
         case setTextFieldText(FocusableField, String)
         case setFocus(FocusableField?)
         case clearFocusableField
@@ -35,8 +36,10 @@ final class SurebetCalculatorViewModel: ObservableObject {
         switch action {
         case let .selectRow(row):
             select(row)
-        case let .selectNumberOfRows(numberOfRows):
-            select(numberOfRows)
+        case .addRow:
+            addRow()
+        case .removeRow:
+            removeRow()
         case let .setTextFieldText(field, text):
             set(field, text: text)
         case let .setFocus(focus):
@@ -75,14 +78,22 @@ private extension SurebetCalculatorViewModel {
         calculate()
     }
 
-    func select(_ numberOfRows: NumberOfRows) {
-        selectedNumberOfRows = numberOfRows
-        let indexesOfUndisplayedRows = selectedNumberOfRows.rawValue..<rows.count
-        if rows[indexesOfUndisplayedRows].contains(where: \.isON) {
-            deselectCurrentRow()
+    func addRow() {
+        if selectedNumberOfRows != .ten {
+            selectedNumberOfRows = .init(rawValue: selectedNumberOfRows.rawValue + 1) ?? .two
         }
-        clear(indexesOfUndisplayedRows)
-        calculate()
+    }
+
+    func removeRow() {
+        if selectedNumberOfRows != .two {
+            selectedNumberOfRows = .init(rawValue: selectedNumberOfRows.rawValue - 1) ?? .two
+            let indexesOfUndisplayedRows = selectedNumberOfRows.rawValue..<rows.count
+            if rows[indexesOfUndisplayedRows].contains(where: \.isON) {
+                deselectCurrentRow()
+            }
+            clear(indexesOfUndisplayedRows)
+            calculate()
+        }
     }
 
     func set(_ textField: FocusableField, text: String) {

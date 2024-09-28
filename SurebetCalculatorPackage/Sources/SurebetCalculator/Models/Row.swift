@@ -7,7 +7,7 @@ struct Row: Equatable {
     var coefficient = ""
     var income = "0"
 
-    static func createRows(_ number: Int = 4) -> [Row] {
+    static func createRows(_ number: Int = 10) -> [Row] {
         (0..<number).map { Row(id: $0) }
     }
 }

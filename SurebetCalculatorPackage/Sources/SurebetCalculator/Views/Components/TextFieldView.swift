@@ -28,7 +28,6 @@ struct TextFieldView: View {
                     viewModel.send(.setFocus(focus))
                 }
             }
-            .accessibilityAddTraits(.isButton)
     }
 }
 

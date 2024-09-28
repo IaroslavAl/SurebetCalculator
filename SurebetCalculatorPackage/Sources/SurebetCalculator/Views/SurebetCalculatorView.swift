@@ -6,20 +6,27 @@ struct SurebetCalculatorView: View {
 
     var body: some View {
         VStack(spacing: spacing) {
-            PickerView()
             ScrollView(showsIndicators: false) {
                 VStack(spacing: spacing) {
                     Banner.view
+                        .padding(.horizontal, horizontalPadding)
                     TotalRowView()
                         .padding(.trailing, horizontalPadding)
                     rowsView
+                    HStack(spacing: spacing) {
+                        removeButton
+                        addButton
+                    }
+                    Spacer()
                 }
+                .background(
+                    Color.black
+                        .clipShape(.rect)
+                        .onTapGesture {
+                            viewModel.send(.hideKeyboard)
+                        }
+                )
             }
-            .simultaneousGesture(
-                TapGesture().onEnded {
-                    viewModel.send(.hideKeyboard)
-                }
-            )
         }
         .navigationTitle(navigationTitle)
         .navigationBarTitleDisplayMode(.inline)
@@ -36,7 +43,7 @@ private extension SurebetCalculatorView {
             ForEach(viewModel.displayedRowIndexes, id: \.self) { id in
                 RowView(id: id)
             }
-            .transition(.move(edge: .leading))
+            .transition(.opacity)
             .animation(.default, value: viewModel.selectedNumberOfRows)
         }
         .padding(.trailing, horizontalPadding)
@@ -53,6 +60,28 @@ private extension SurebetCalculatorView {
             KeyboardDoneButton()
         }
     }
+
+    var addButton: some View {
+        Image(systemName: "plus.circle")
+            .foregroundStyle(viewModel.selectedNumberOfRows == .ten ? .gray : .green)
+            .font(buttonFont)
+            .disabled(viewModel.selectedNumberOfRows == .ten)
+            .onTapGesture {
+                viewModel.send(.addRow)
+                UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+            }
+    }
+    
+    var removeButton: some View {
+        Image(systemName: "minus.circle")
+            .foregroundStyle(viewModel.selectedNumberOfRows == .two ? .gray : .red)
+            .font(buttonFont)
+            .disabled(viewModel.selectedNumberOfRows == .two)
+            .onTapGesture {
+                viewModel.send(.removeRow)
+                UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
+            }
+    }
 }
 
 private extension SurebetCalculatorView {
@@ -62,6 +91,7 @@ private extension SurebetCalculatorView {
     var rowsSpacing: CGFloat { iPad ? 12 : 8 }
     var horizontalPadding: CGFloat { iPad ? 12 : 8 }
     var font: Font { iPad ? .title : .body }
+    var buttonFont: Font { iPad ? .largeTitle : .title }
 }
 
 #Preview {
