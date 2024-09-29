@@ -6,15 +6,29 @@ struct BannerView: View {
     let imageUrl = "https://breaking-bet.com/banners/en/gif/BreakingBet_banner1_600x200_en.gif"
     let link = "https://breaking-bet.com/?r=85294"
 
+    @State
+    private var isPresented: Bool = true
+
     var body: some View {
-        WebImage(url: .init(string: imageUrl))
-            .resizable()
-            .scaledToFit()
-            .cornerRadius(cornerRadius)
-            .onTapGesture {
-                openURL(link)
-                AnalyticsManager.log(name: "ClickingOnAnAdvertisement")
-            }
+        if isPresented {
+            WebImage(url: .init(string: imageUrl))
+                .resizable()
+                .scaledToFit()
+                .cornerRadius(cornerRadius)
+                .onTapGesture {
+                    openURL(link)
+                    AnalyticsManager.log(name: "ClickingOnAnAdvertisement")
+                }
+                .overlay(alignment: .topTrailing) {
+                    Image(systemName: "xmark.circle.fill")
+                        .foregroundStyle(.gray.opacity(0.25))
+                        .padding(8)
+                        .onTapGesture {
+                            isPresented = false
+                            AnalyticsManager.log(name: "CloseBanner")
+                        }
+                }
+        }
     }
 }
 

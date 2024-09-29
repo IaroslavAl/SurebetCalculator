@@ -9,11 +9,11 @@ struct SurebetCalculatorView: View {
             ScrollView(showsIndicators: false) {
                 VStack(spacing: spacing) {
                     Banner.view
-                        .padding(.horizontal, horizontalPadding)
+                        .padding([.top, .horizontal], horizontalPadding)
                     TotalRowView()
                         .padding(.trailing, horizontalPadding)
                     rowsView
-                    HStack(spacing: spacing) {
+                    HStack(spacing: .zero) {
                         removeButton
                         addButton
                     }
@@ -21,7 +21,7 @@ struct SurebetCalculatorView: View {
                 }
                 .background(
                     Color.black
-                        .clipShape(.rect)
+                        .contentShape(.rect)
                         .onTapGesture {
                             viewModel.send(.hideKeyboard)
                         }
@@ -66,6 +66,8 @@ private extension SurebetCalculatorView {
             .foregroundStyle(viewModel.selectedNumberOfRows == .ten ? .gray : .green)
             .font(buttonFont)
             .disabled(viewModel.selectedNumberOfRows == .ten)
+            .padding()
+            .contentShape(.rect)
             .onTapGesture {
                 viewModel.send(.addRow)
                 UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
@@ -77,6 +79,8 @@ private extension SurebetCalculatorView {
             .foregroundStyle(viewModel.selectedNumberOfRows == .two ? .gray : .red)
             .font(buttonFont)
             .disabled(viewModel.selectedNumberOfRows == .two)
+            .padding()
+            .contentShape(.rect)
             .onTapGesture {
                 viewModel.send(.removeRow)
                 UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
