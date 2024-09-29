@@ -80,6 +80,7 @@ let package = Package(
         .target(
             name: "Root",
             dependencies: [
+                "AnalyticsManager",
                 "Onboarding",
                 "ReviewHandler",
                 "SurebetCalculator",

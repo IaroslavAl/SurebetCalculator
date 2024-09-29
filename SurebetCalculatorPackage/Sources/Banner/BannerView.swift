@@ -23,6 +23,7 @@ struct BannerView: View {
                     Image(systemName: "xmark.circle.fill")
                         .foregroundStyle(.gray.opacity(0.25))
                         .padding(8)
+                        .contentShape(.rect)
                         .onTapGesture {
                             isPresented = false
                             AnalyticsManager.log(name: "CloseBanner")

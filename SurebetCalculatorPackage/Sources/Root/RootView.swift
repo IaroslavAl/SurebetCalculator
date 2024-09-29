@@ -1,3 +1,4 @@
+import AnalyticsManager
 import Onboarding
 import ReviewHandler
 import SurebetCalculator
@@ -32,10 +33,12 @@ struct RootView: View {
         .alert(requestReviewTitle, isPresented: $alertIsPresented) {
             Button("No") {
                 alertIsPresented = false
+                AnalyticsManager.log(name: "RequestReview", parameters: ["enjoying_calculator": false])
             }
             Button("Yes") {
                 alertIsPresented = false
                 ReviewHandler.requestReview()
+                AnalyticsManager.log(name: "RequestReview", parameters: ["enjoying_calculator": true])
             }
         }
     }

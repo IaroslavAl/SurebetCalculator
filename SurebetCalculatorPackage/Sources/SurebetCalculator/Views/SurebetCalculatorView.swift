@@ -6,26 +6,32 @@ struct SurebetCalculatorView: View {
 
     var body: some View {
         VStack(spacing: spacing) {
-            ScrollView(showsIndicators: false) {
-                VStack(spacing: spacing) {
-                    Banner.view
-                        .padding([.top, .horizontal], horizontalPadding)
-                    TotalRowView()
-                        .padding(.trailing, horizontalPadding)
-                    rowsView
-                    HStack(spacing: .zero) {
-                        removeButton
-                        addButton
-                    }
-                    Spacer()
-                }
-                .background(
-                    Color.black
-                        .contentShape(.rect)
-                        .onTapGesture {
-                            viewModel.send(.hideKeyboard)
+            GeometryReader { geo in
+                ScrollView(showsIndicators: false) {
+                    VStack(spacing: spacing) {
+                        Banner.view
+                            .padding([.top, .horizontal], horizontalPadding)
+                        TotalRowView()
+                            .padding(.trailing, horizontalPadding)
+                        rowsView
+                        HStack(spacing: .zero) {
+                            removeButton
+                            addButton
                         }
-                )
+                    }
+                    .frame(
+                        minWidth: geo.size.width,
+                        minHeight: geo.size.height,
+                        alignment: .top
+                    )
+                    .background(
+                        Color.clear
+                            .contentShape(.rect)
+                            .onTapGesture {
+                                viewModel.send(.hideKeyboard)
+                            }
+                    )
+                }
             }
         }
         .navigationTitle(navigationTitle)
@@ -34,6 +40,7 @@ struct SurebetCalculatorView: View {
         .frame(maxHeight: .infinity, alignment: .top)
         .font(font)
         .environmentObject(viewModel)
+        .animation(.default, value: viewModel.selectedNumberOfRows)
     }
 }
 
@@ -43,8 +50,6 @@ private extension SurebetCalculatorView {
             ForEach(viewModel.displayedRowIndexes, id: \.self) { id in
                 RowView(id: id)
             }
-            .transition(.opacity)
-            .animation(.default, value: viewModel.selectedNumberOfRows)
         }
         .padding(.trailing, horizontalPadding)
     }
@@ -66,7 +71,7 @@ private extension SurebetCalculatorView {
             .foregroundStyle(viewModel.selectedNumberOfRows == .ten ? .gray : .green)
             .font(buttonFont)
             .disabled(viewModel.selectedNumberOfRows == .ten)
-            .padding()
+            .padding(8)
             .contentShape(.rect)
             .onTapGesture {
                 viewModel.send(.addRow)
@@ -79,7 +84,7 @@ private extension SurebetCalculatorView {
             .foregroundStyle(viewModel.selectedNumberOfRows == .two ? .gray : .red)
             .font(buttonFont)
             .disabled(viewModel.selectedNumberOfRows == .two)
-            .padding()
+            .padding(8)
             .contentShape(.rect)
             .onTapGesture {
                 viewModel.send(.removeRow)
