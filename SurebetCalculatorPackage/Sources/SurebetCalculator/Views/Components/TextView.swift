@@ -29,8 +29,3 @@ private extension TextView {
         return true
     }
 }
-
-#Preview {
-    TextView(text: 1.formatToString(isPercent: true), isPercent: true)
-        .padding()
-}

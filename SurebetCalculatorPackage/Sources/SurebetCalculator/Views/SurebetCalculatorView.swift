@@ -103,7 +103,3 @@ private extension SurebetCalculatorView {
     var font: Font { iPad ? .title : .body }
     var buttonFont: Font { iPad ? .largeTitle : .title }
 }
-
-#Preview {
-    SurebetCalculatorView()
-}

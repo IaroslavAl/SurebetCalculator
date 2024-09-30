@@ -34,8 +34,3 @@ private extension OnboardingIndex {
         Color(uiColor: index == viewModel.currentPage ? .darkGray : .lightGray)
     }
 }
-
-#Preview {
-    OnboardingIndex()
-        .environmentObject(OnboardingViewModel())
-}

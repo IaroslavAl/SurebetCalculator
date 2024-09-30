@@ -68,12 +68,3 @@ private extension TextFieldView {
         }
     }
 }
-
-#Preview {
-    TextFieldView(
-        placeholder: "Total bet size",
-        focusableField: .totalBetSize
-    )
-    .padding()
-    .environmentObject(SurebetCalculatorViewModel())
-}

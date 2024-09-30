@@ -51,8 +51,3 @@ private extension ToggleButton {
         impactFeedback.impactOccurred()
     }
 }
-
-#Preview {
-    ToggleButton(row: .total)
-        .environmentObject(SurebetCalculatorViewModel())
-}

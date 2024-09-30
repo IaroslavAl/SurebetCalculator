@@ -43,7 +43,3 @@ private extension BannerView {
         }
     }
 }
-
-#Preview {
-    BannerView()
-}

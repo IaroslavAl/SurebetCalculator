@@ -40,8 +40,3 @@ private extension OnboardingButton {
             .animation(.none, value: viewModel.currentPage)
     }
 }
-
-#Preview {
-    OnboardingButton()
-        .environmentObject(OnboardingViewModel())
-}

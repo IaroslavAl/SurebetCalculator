@@ -26,8 +26,3 @@ private extension OnboardingCloseButton {
             )
     }
 }
-
-#Preview {
-    OnboardingCloseButton()
-        .environmentObject(OnboardingViewModel())
-}

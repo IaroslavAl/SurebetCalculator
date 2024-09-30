@@ -12,8 +12,3 @@ struct NavigationClearButton: View {
         }
     }
 }
-
-#Preview {
-    NavigationClearButton()
-        .environmentObject(SurebetCalculatorViewModel())
-}

@@ -20,12 +20,3 @@ struct OnboardingPageView: View {
         }
     }
 }
-
-#Preview {
-    OnboardingPageView(
-        page: .init(
-            image: "onboarding1",
-            description: "description"
-        )
-    )
-}

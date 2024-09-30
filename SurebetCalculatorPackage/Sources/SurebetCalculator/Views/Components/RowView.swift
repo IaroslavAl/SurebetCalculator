@@ -60,9 +60,3 @@ private extension RowView {
         }
     }
 }
-
-#Preview {
-    RowView(id: 0)
-        .padding(.trailing)
-        .environmentObject(SurebetCalculatorViewModel())
-}

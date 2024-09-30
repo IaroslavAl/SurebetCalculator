@@ -18,7 +18,3 @@ struct OnboardingView: View {
         .environmentObject(viewModel)
     }
 }
-
-#Preview {
-    OnboardingView(onboardingIsShown: .constant(false))
-}

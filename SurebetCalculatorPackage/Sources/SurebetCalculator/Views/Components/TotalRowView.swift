@@ -41,9 +41,3 @@ private extension TotalRowView {
         }
     }
 }
-
-#Preview {
-    TotalRowView()
-        .padding(.trailing)
-        .environmentObject(SurebetCalculatorViewModel())
-}

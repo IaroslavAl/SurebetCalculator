@@ -13,8 +13,3 @@ struct KeyboardDoneButton: View {
 private extension KeyboardDoneButton {
     var text: String { "Done" }
 }
-
-#Preview {
-    KeyboardDoneButton()
-        .environmentObject(SurebetCalculatorViewModel())
-}
