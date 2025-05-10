@@ -2,15 +2,17 @@ import Banner
 import SwiftUI
 
 struct SurebetCalculatorView: View {
-    @StateObject private var viewModel = SurebetCalculatorViewModel()
+    @StateObject
+    private var viewModel = SurebetCalculatorViewModel()
+
+    @FocusState
+    private var isFocused
 
     var body: some View {
         VStack(spacing: spacing) {
-            GeometryReader { geo in
+            ScrollViewReader { proxy in
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: spacing) {
-                        Banner.view
-                            .padding(.horizontal, horizontalPadding)
                         TotalRowView()
                             .padding(.trailing, horizontalPadding)
                         rowsView
@@ -18,13 +20,9 @@ struct SurebetCalculatorView: View {
                             removeButton
                             addButton
                         }
+                        .id("EndOfView")
                     }
                     .padding(rowsSpacing)
-                    .frame(
-                        minWidth: geo.size.width,
-                        minHeight: geo.size.height,
-                        alignment: .top
-                    )
                     .background(
                         Color.clear
                             .contentShape(.rect)
@@ -32,7 +30,17 @@ struct SurebetCalculatorView: View {
                                 viewModel.send(.hideKeyboard)
                             }
                     )
+                    .focused($isFocused)
                 }
+                .onChange(of: viewModel.selectedNumberOfRows) { _ in
+                    withAnimation {
+                        proxy.scrollTo("EndOfView", anchor: .bottom)
+                    }
+                }
+            }
+            if !isFocused {
+                Banner.view
+                    .padding(.horizontal, horizontalPadding)
             }
         }
         .navigationTitle(navigationTitle)
