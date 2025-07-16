@@ -15,15 +15,15 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/appmetrica/appmetrica-sdk-ios.git",
-            .upToNextMinor(from: "5.4.0")
+            .upToNextMinor(from: "5.10.0")
         ),
         .package(
             url: "https://github.com/realm/SwiftLint.git",
-            .upToNextMinor(from: "0.55.0")
+            .upToNextMinor(from: "0.59.1")
         ),
         .package(
             url: "https://github.com/SDWebImage/SDWebImageSwiftUI.git",
-            .upToNextMinor(from: "3.1.0")
+            .upToNextMinor(from: "3.1.3")
         ),
     ],
     targets: [

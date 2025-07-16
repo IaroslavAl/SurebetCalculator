@@ -6,7 +6,7 @@ import SwiftUI
 
 struct RootView: View {
     @AppStorage("onboardingIsShown") private var onboardingIsShown = false
-    @AppStorage("requestReviewWasShon") private var requestReviewWasShon = false
+    @AppStorage("1.4.0") private var requestReviewWasShon = false
     @AppStorage("numberOfOpenings") private var numberOfOpenings = 0
 
     @State private var isAnimation = false
@@ -46,7 +46,7 @@ struct RootView: View {
 
 private extension RootView {
     var requestReviewTitle: String {
-        "Enjoying Calculator"
+        "Do you like the app?"
     }
 
     func showOnboardingView() {
@@ -58,9 +58,9 @@ private extension RootView {
     func showRequestReview() {
 #if !DEBUG
         Task {
+            numberOfOpenings += 1
             try await Task.sleep(nanoseconds: NSEC_PER_SEC * 1)
             if !requestReviewWasShon, numberOfOpenings >= 5, onboardingIsShown {
-                numberOfOpenings += 1
                 alertIsPresented = true
                 requestReviewWasShon = true
             }

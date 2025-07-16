@@ -3,15 +3,14 @@ import SDWebImageSwiftUI
 import SwiftUI
 
 struct BannerView: View {
-    let imageUrl = "https://breaking-bet.com/banners/en/gif/BreakingBet_banner1_600x200_en.gif"
-    let link = "https://breaking-bet.com/?r=85294"
+    let link = "https://www.rebelbetting.com/valuebetting?x=surebet_profit&a_bid=c3ecdf4b"
 
     @State
     private var isPresented: Bool = true
 
     var body: some View {
         if isPresented {
-            WebImage(url: .init(string: imageUrl))
+            WebImage(url: .init(string: url))
                 .resizable()
                 .scaledToFit()
                 .cornerRadius(cornerRadius)
@@ -21,7 +20,9 @@ struct BannerView: View {
                 }
                 .overlay(alignment: .topTrailing) {
                     Image(systemName: "xmark.circle.fill")
-                        .foregroundStyle(.gray.opacity(0.25))
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                        .foregroundStyle(.black.opacity(0.25))
                         .padding(8)
                         .contentShape(.rect)
                         .onTapGesture {
@@ -40,6 +41,14 @@ private extension BannerView {
     func openURL(_ url: String) {
         if let url = URL(string: url) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
+
+    var url: String {
+        if iPad {
+            "https://affiliates.rebelbetting.com/accounts/default1/banners/1ab8d504.jpg"
+        } else {
+            "https://affiliates.rebelbetting.com/accounts/default1/banners/c3ecdf4b.gif"
         }
     }
 }
