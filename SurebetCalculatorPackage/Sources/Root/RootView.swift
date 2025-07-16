@@ -58,8 +58,8 @@ private extension RootView {
     func showRequestReview() {
 #if !DEBUG
         Task {
-            numberOfOpenings += 1
             try await Task.sleep(nanoseconds: NSEC_PER_SEC * 1)
+            numberOfOpenings += 1
             if !requestReviewWasShon, numberOfOpenings >= 5, onboardingIsShown {
                 alertIsPresented = true
                 requestReviewWasShon = true
